@@ -1,0 +1,141 @@
+@define-color background #0a0a0a;
+@define-color background-light #131314;
+@define-color foreground #c9c7cd;
+@define-color foreground-dim #757581;
+@define-color red #d44657;
+@define-color yellow #f0c5a9;
+@define-color magenta #f591b2;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: rgba(12, 10, 10, 0);
+  color: @foreground;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  border-top: 1px solid transparent;
+  background-color: transparent;
+  color: @foreground-dim;
+  margin: 0;
+}
+
+#workspaces button:hover {
+  background: @background-light;
+  color: @foreground;
+}
+
+#workspaces button.active {
+  border-top: 1px solid @foreground-dim;
+  background-color: transparent;
+  color: @foreground;
+}
+
+#workspaces button.urgent {
+  color: @red;
+  animation-name: blink-urgent;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink-urgent {
+  from {
+    color: @red;
+  }
+  to {
+    color: transparent;
+  }
+}
+
+#custom-separator {
+  color: alpha(@foreground-dim, 0.3);
+}
+
+#clock,
+#network,
+#pulseaudio,
+#battery,
+#temperature,
+#cpu,
+#memory,
+#custom-vpn,
+#custom-capslock {
+  color: @foreground;
+  padding: 0 5px;
+  margin: 0;
+  background-color: transparent;
+}
+
+#custom-vpn {
+  margin-right: 5px;
+}
+
+#pulseaudio {
+  font-size: 20px;
+}
+
+#pulseaudio.muted {
+  color: @foreground-dim;
+}
+
+#network.disconnected {
+  color: @red;
+}
+
+#cpu.warning,
+#memory.warning,
+#temperature.critical {
+  color: @yellow;
+}
+
+#cpu.critical,
+#memory.critical {
+  color: @red;
+  animation-name: blink-red;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-capslock.active {
+  color: @magenta;
+  font-size: 20px;
+  padding: 0 7px 0 6px;
+}
+
+#battery.charging,
+#battery.plugged {
+  font-size: 18px;
+}
+
+#battery.warning:not(.charging),
+#battery.critical:not(.charging) {
+  color: @red;
+  animation-name: blink-red;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink-red {
+  from {
+    background-color: transparent;
+    color: @red;
+  }
+  to {
+    background-color: @red;
+    color: @background;
+  }
+}

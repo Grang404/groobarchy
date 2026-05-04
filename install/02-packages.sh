@@ -31,7 +31,7 @@ for group in "${groups[@]}"; do
 	install_group "$group"
 done
 
-user_pkgs="$HOME/.config/groob/packages.pkgs"
+user_pkgs="$GROOB_DIR/install/packages/user.pkgs"
 if [[ -f "$user_pkgs" ]]; then
 	print_msg "Installing user packages..."
 	mapfile -t pkgs < <(
