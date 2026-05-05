@@ -9,8 +9,7 @@ print_msg "Installing GPU drivers ($GPU)..."
 
 install_gpu_pkgs() {
 	sudo pacman -S --needed --noconfirm "$@" || {
-		print_error "GPU driver failed to install"
-		exit 1
+		die "GPU driver failed to install"
 	}
 }
 

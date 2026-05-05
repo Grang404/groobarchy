@@ -26,8 +26,7 @@ source "$GROOB_DIR/install/core.sh" || {
 }
 
 source "$GROOB_DIR/install/detect.sh" || {
-	echo "failed to source detect.sh"
-	exit 1
+	die "failed to source detect.sh"
 }
 
 PROFILE="${PROFILE:-$(detect_platform)}"
@@ -101,8 +100,7 @@ main() {
 
 		print_msg "Running $name..."
 		bash "$script" || {
-			print_warning "$name failed"
-			exit 1
+			die "$name failed"
 		}
 		print_success "$name done"
 	done
