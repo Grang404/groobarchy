@@ -23,3 +23,4 @@ vim.opt.scrolloff = 12
 vim.opt.list = false
 -- vim.opt.listchars = { tab = "▸ ", trail = "•", space = "⋅", nbsp = "␣" }
 vim.opt.cursorline = true
+vim.opt.colorcolumn = "81"

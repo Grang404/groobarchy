@@ -4,7 +4,7 @@
 # will be translated on a per-path-element basis into the users locale
 
 DESKTOP=.local/desktop
-DOWNLOAD=Downloads
-DOCUMENTS=Documents
-PICTURES=Pictures
-VIDEOS=Videos
+DOWNLOAD=downloads
+DOCUMENTS=docs
+PICTURES=pictures
+VIDEOS=videos
