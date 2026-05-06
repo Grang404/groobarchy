@@ -30,6 +30,6 @@ for dot in zshrc p10k.zsh zprofile zshenv; do
 done
 
 # mimelist
-link "$DOTS/mimeapps.list" "$CONFIG"
+link "$DOTS/mimeapps.list" "$CONFIG/mimeapps.list"
 
 print_success "dotfiles linked"
