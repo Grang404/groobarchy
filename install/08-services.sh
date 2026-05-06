@@ -6,7 +6,7 @@ print_msg "enabling system services..."
 
 system_services=(
 	"cronie.service"
-	"lm_sensors.service"
+	# "lm_sensors.service"
 	"fstrim.timer"
 )
 

@@ -108,7 +108,7 @@ main() {
 
 	ran=0
 	for script in "${scripts[@]}"; do
-		[[ -x "$script" ]] || continue
+		[[ -f "$script" ]] || continue
 		name="$(basename "$script")"
 
 		if [[ "$name" == *"power"* && "$PROFILE" != "laptop" ]]; then
@@ -122,7 +122,7 @@ main() {
 		((ran++))
 	done
 
-	[[ $ran -eq 0 ]] && print_warning "no scripts were executed (none executable?)"
+	[[ $ran -eq 0 ]] && die "install failed: no scripts were executed (none executable?)"
 
 	shopt -u nullglob
 
