@@ -36,15 +36,15 @@ source "$GROOB_DIR/install/detect.sh" || {
 	die "failed to source detect.sh"
 }
 
-PROFILE="${PROFILE:-$(detect_platform)}"
-GPU="${GPU:-$(detect_gpu)}"
+PROFILE=${PROFILE:-$(detect_platform)}
+GPU=${GPU:-$(detect_gpu)}
 export PROFILE GPU
 
 mkdir -p "$USER_HOME/.config/groob"
 echo "export PROFILE=$PROFILE" >"$USER_HOME/.config/groob/env"
 echo "export GPU=$GPU" >>"$USER_HOME/.config/groob/env"
 
-LOG_FILE="$GROOB_DIR/logs/install.log"
+LOG_FILE=$GROOB_DIR/logs/install.log
 mkdir -p "$GROOB_DIR/logs"
 
 # sudo keepalive

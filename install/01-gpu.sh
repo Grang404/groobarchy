@@ -3,8 +3,6 @@
 source "$GROOB_DIR/install/core.sh"
 source "$GROOB_DIR/install/detect.sh"
 
-GPU="${GPU:-$(detect_gpu)}"
-
 print_msg "Installing GPU drivers ($GPU)..."
 
 install_gpu_pkgs() {

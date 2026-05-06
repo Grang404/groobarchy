@@ -3,12 +3,12 @@
 source "$GROOB_DIR/install/core.sh"
 source "$GROOB_DIR/install/detect.sh"
 
-PROFILE="${PROFILE:-$(detect_platform)}"
-PKG_DIR="$GROOB_DIR/install/packages"
+PROFILE=${PROFILE:-$(detect_platform)}
+PKG_DIR=$GROOB_DIR/install/packages
 
 install_group() {
-	local group="$1"
-	local file="$PKG_DIR/$group.pkgs"
+	local group=$1
+	local file=$PKG_DIR/$group.pkgs
 
 	[[ -f "$file" ]] || {
 		print_warning "Missing: $file, skipping"
@@ -19,8 +19,15 @@ install_group() {
 		grep -v '^\s*#' "$file" | grep -v '^\s*$' | sed 's/\s*#.*//' | tr -d ' '
 	)
 
+	[[ ${#pkgs[@]} -eq 0 ]] && {
+		print_warning "$group has no packages, skipping"
+		return
+	}
+
 	print_msg "Installing $group packages..."
-	sudo pacman -S --needed --noconfirm "${pkgs[@]}"
+
+	sudo pacman -S --needed --noconfirm "${pkgs[@]}" || die "Failed to install $group!"
+
 	print_success "$group done"
 }
 
@@ -34,9 +41,15 @@ done
 user_pkgs="$GROOB_DIR/install/packages/user.pkgs"
 if [[ -f "$user_pkgs" ]]; then
 	print_msg "Installing user packages..."
+
 	mapfile -t pkgs < <(
 		grep -v '^\s*#' "$user_pkgs" | grep -v '^\s*$' | sed 's/\s*#.*//' | tr -d ' '
 	)
-	sudo pacman -S --needed --noconfirm "${pkgs[@]}"
+
+	[[ ${#pkgs[@]} -eq 0 ]] && {
+		print_warning "user.pkgs has no packages, skipping"
+		return
+	}
+	sudo pacman -S --needed --noconfirm "${pkgs[@]}" || die "Failed to install $user_pkgs"
 	print_success "User packages done"
 fi
