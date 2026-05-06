@@ -28,7 +28,7 @@ install_group() {
 
 	sudo pacman -S --needed --noconfirm "${pkgs[@]}" || die "Failed to install $group!"
 
-	print_success "$group done"
+	print_success "All $group packages have been installed..."
 }
 
 groups=(core apps fonts utils)
