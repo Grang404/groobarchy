@@ -12,9 +12,32 @@ print_success() { echo -e "${BOLD}${GREEN}[+]${NC} $1"; }
 print_error() { echo -e "${BOLD}${RED}[!]${NC} $1"; }
 print_warning() { echo -e "${BOLD}${YELLOW}[!]${NC} $1"; }
 
+if [[ -n "$SUDO_USER" ]]; then
+	USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+	export USER_HOME
+fi
+
 die() {
 	print_error "$1"
 	exit "${2:-1}"
+}
+
+link() {
+	local src="$1" tgt="$2"
+	[[ -e "$src" ]] || {
+		print_warning "source not found: $src"
+		return
+	}
+	[[ -z "$tgt" ]] && {
+		print_warning "empty target, skipping"
+		return
+	}
+	[[ -e "$tgt" ]] && {
+		print_warning "Replacing existing: $tgt"
+		rm -rf "$tgt"
+	}
+	ln -sf "$src" "$tgt"
+	print_msg "Linked $(basename "$src") → $tgt"
 }
 
 require_sudo() {

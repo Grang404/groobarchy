@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 [[ -z "$SUDO_USER" ]] && {
-	echo "Must be run via sudo, not as root directly... Unless 👀"
+	echo "must be run via sudo, not as root directly... unless 👀"
 	exit 1
 }
 
@@ -15,7 +15,7 @@ GROOB_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) || {
 EXPECTED_DIR=$USER_HOME/.local/share/groob
 
 if [[ "$GROOB_DIR" != "$EXPECTED_DIR" ]]; then
-	echo "Moving repo to $EXPECTED_DIR..."
+	echo "moving repo to $EXPECTED_DIR..."
 	mkdir -p "$(dirname "$EXPECTED_DIR")"
 	mv "$GROOB_DIR" "$EXPECTED_DIR" || {
 		echo "mv failed"

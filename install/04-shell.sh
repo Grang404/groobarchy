@@ -18,7 +18,7 @@ clone_if_missing() {
 		return
 	fi
 
-	git clone --depth=1 "$url" "$dest"
+	git clone --depth=1 "$url" "$dest" || print_warning "Failed to clone: $url"
 	print_success "$name installed"
 }
 
