@@ -4,7 +4,7 @@ source "$GROOB_DIR/install/core.sh"
 source "$GROOB_DIR/install/detect.sh"
 
 DOTS="$GROOB_DIR/dots"
-CONFIG="$HOME/.config"
+CONFIG="$USER_HOME/.config"
 
 [[ -d "$DOTS" ]] || die "dots directory not found: $DOTS"
 
@@ -29,7 +29,7 @@ for f in "$DOTS/hypr"/*.conf; do link "$f" "$CONFIG/hypr/$(basename "$f")"; done
 
 # home dotfiles
 for dot in zshrc p10k.zsh zprofile zshenv; do
-	link "$DOTS/$dot" "$HOME/.$dot"
+	link "$DOTS/$dot" "$USER_HOME/.$dot"
 done
 
 print_success "Dotfiles linked"

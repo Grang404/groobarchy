@@ -2,15 +2,16 @@
 
 source "$GROOB_DIR/install/core.sh"
 
-PLUGINS_DIR="$HOME/.local/share/groob/dots/zsh/plugins"
-THEMES_DIR="$HOME/.local/share/groob/dots/zsh/themes"
+PLUGINS_DIR="$USER_HOME/.local/share/groob/dots/zsh/plugins"
+THEMES_DIR="$USER_HOME/.local/share/groob/dots/zsh/themes"
 
 mkdir -p "$PLUGINS_DIR" "$THEMES_DIR"
 
 clone_if_missing() {
-	local url="$1"
-	local dest="$2"
-	local name="$(basename "$dest")"
+	local url=$1
+	local dest=$2
+	local name
+	name=$(basename "$dest")
 
 	if [[ -d "$dest" ]]; then
 		print_msg "$name already exists, skipping"

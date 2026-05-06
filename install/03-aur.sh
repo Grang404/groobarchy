@@ -30,9 +30,12 @@ install_paru() {
 
 	echo "$SUDO_USER ALL=(ALL) NOPASSWD: ALL" >"$sudoers_drop"
 	chmod 440 "$sudoers_drop"
-	sudo -u "$SUDO_USER" bash -c "cd $paru_dir && makepkg -si --noconfirm" || {
-		die "Failed to install Paru"
-	}
+
+	# Prevent the sudoers file from persistent on termination
+	cleanup() { rm -f "$sudoers_drop"; }
+	trap cleanup EXIT
+	sudo -u "$SUDO_USER" bash -c "cd $paru_dir && makepkg -si --noconfirm" || die "Failed to install Paru"
+
 	rm -f "$sudoers_drop" || print_warning "Failed to remove $sudoers_drop"
 
 	print_success "paru installed"
