@@ -62,30 +62,32 @@ exec > >(tee -a "$LOG_FILE") 2>&1
 ensure_git() {
 	groob_repo="https://github.com/Grang404/groobarchy.git"
 	[[ -d "$GROOB_DIR/.git" ]] && return
-	print_warning "No git repository detected"
+	print_warning "no git repository detected"
 	command -v git &>/dev/null || die "git is required"
 	local tmp
 	tmp="$(mktemp -d)"
 	git clone "$groob_repo" "$tmp" || {
 		rm -rf "$tmp"
-		die "Failed to clone $groob_repo into $tmp. Removing $tmp."
+		die "failed to clone $groob_repo into $tmp. Removing $tmp."
 	}
 	mv "$tmp/.git" "$GROOB_DIR/.git"
 	rm -rf "$tmp"
 	git -C "$GROOB_DIR" checkout .
-	print_success "Repo initialised"
+	print_success "repo initialised"
 }
 
 install_cli() {
-	local bin_dir=$USER_HOME/local/bin
+	local bin_dir=$USER_HOME/.local/bin
 	mkdir -p "$bin_dir"
 
 	for script in "$GROOB_DIR/bin/"*; do
 		[[ -f "$script" ]] || continue
-		ln -sfn "$script" "$bin_dir/$(basename "$script")"
-		print_msg "Linked $(basename "$script")"
+		ln -sfn "$script" "$bin_dir/$(basename "$script")" || { print_warning "failed to link $(basename "$script")"; continue; }
+		print_msg "linked $(basename "$script")"
+		print_msg "linked $(basename "$script")"
 	done
 
+	export PATH="$bin_dir:$PATH"
 	[[ "$PATH" == *"$bin_dir"* ]] || print_warning "$bin_dir not in PATH"
 	print_success "CLI installed"
 }
@@ -97,12 +99,12 @@ main() {
 	ensure_git
 	install_cli
 
-	print_msg "Detected: $PROFILE / $GPU"
-	print_msg "Running install scripts..."
+	print_msg "detected: $PROFILE / $GPU"
+	print_msg "running install scripts..."
 
 	shopt -s nullglob
 	scripts=("$GROOB_DIR"/install/[0-9]*)
-	[[ ${#scripts[@]} -eq 0 ]] && die "No install scripts found!"
+	[[ ${#scripts[@]} -eq 0 ]] && die "no install scripts found!"
 
 	ran=0
 	for script in "${scripts[@]}"; do
@@ -110,22 +112,22 @@ main() {
 		name="$(basename "$script")"
 
 		if [[ "$name" == *"power"* && "$PROFILE" != "laptop" ]]; then
-			print_msg "Skipping $name (desktop)"
+			print_msg "skipping $name (desktop)"
 			continue
 		fi
 
-		print_msg "Running $name..."
+		print_msg "running $name..."
 		bash "$script" || die "$name failed"
 		print_success "$name done"
 		((ran++))
 	done
 
-	[[ $ran -eq 0 ]] && print_warning "No scripts were executed (none executable?)"
+	[[ $ran -eq 0 ]] && print_warning "no scripts were executed (none executable?)"
 
 	shopt -u nullglob
 
-	print_success "Install complete"
-	print_warning "Reboot recommended"
+	print_success "install complete"
+	print_warning "reboot recommended"
 }
 
 main
