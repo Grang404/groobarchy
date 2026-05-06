@@ -77,7 +77,7 @@ ensure_git() {
 }
 
 install_cli() {
-	local bin_dir=$USER_HOME/.local/bin
+	local bin_dir=$USER_HOME/local/bin
 	mkdir -p "$bin_dir"
 
 	for script in "$GROOB_DIR/bin/"*; do
