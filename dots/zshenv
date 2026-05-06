@@ -1,6 +1,7 @@
 export GROOB_DIR="$HOME/.local/share/groob"
 export DOTS="$GROOB_DIR/dots"
 export PATH="$GROOB_DIR/bin:$PATH"
+export PROFILE=desktop
 
 
 export EDITOR='nvim'

@@ -125,4 +125,4 @@ precmd() {
 eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f "$GROOB_ZSH_DIR/p10k.zsh" ]] && source "$GROOB_ZSH_DIR/.p10k.zsh"
+[[ -f "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
