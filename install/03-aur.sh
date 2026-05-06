@@ -16,7 +16,7 @@ install_paru() {
 		sudo pacman -S --needed --noconfirm rustup || {
 			die "rustup install failed"
 		}
-		rustup default stable
+		sudo -u "$SUDO_USER" rustup default stable || die "rustup default stable failed"
 	fi
 
 	local paru_dir="/tmp/paru"

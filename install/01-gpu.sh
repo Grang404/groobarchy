@@ -16,8 +16,8 @@ amd) install_gpu_pkgs vulkan-radeon lib32-vulkan-radeon mesa lib32-mesa ;;
 nvidia) install_gpu_pkgs nvidia nvidia-utils lib32-nvidia-utils ;;
 intel) install_gpu_pkgs mesa lib32-mesa vulkan-intel lib32-vulkan-intel ;;
 *)
-	print_warning "Unknown GPU, skipping"
-	exit 0
+	print_warning "Unknown GPU, defaulting to mesa"
+	install_gpu_pkgs mesa lib32-mesa
 	;;
 esac
 
