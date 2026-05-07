@@ -39,9 +39,3 @@ link() {
 	ln -sf "$src" "$tgt"
 	print_msg "Linked $(basename "$src") → $tgt"
 }
-
-require_sudo() {
-	[[ "$EUID" -eq 0 ]] && return
-	sudo -n true 2>/dev/null && return
-	die "This module requires sudo. Run setup.sh first or run: sudo -v"
-}
