@@ -1,13 +1,13 @@
 export GROOB_DIR="$HOME/.local/share/groob"
 export DOTS="$GROOB_DIR/dots"
 export PATH="$GROOB_DIR/bin:$PATH"
-export PROFILE=desktop
-
+export GROOB_ZSH_DIR="$DOTS/zsh"
+export EZA_CONFIG_DIR="$DOTS/eza/"
 
 export EDITOR='nvim'
-export EZA_CONFIG_DIR="$DOTS/eza/"
 export ARCHFLAGS="-arch $(uname -m)"
 export KEYTIMEOUT=1
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"

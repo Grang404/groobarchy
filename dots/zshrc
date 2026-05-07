@@ -1,3 +1,7 @@
+precmd() {
+    print ""
+}
+
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=50000
@@ -13,9 +17,6 @@ setopt SHARE_HISTORY             # share command history data
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-
-GROOB_ZSH_DIR="$DOTS/zsh"
 
 # Load powerlevel10k theme
 source "$GROOB_ZSH_DIR/themes/powerlevel10k/powerlevel10k.zsh-theme"
@@ -100,13 +101,7 @@ alias venv='[[ -d .venv ]] && source .venv/bin/activate || python -m venv .venv 
 alias vpn='~/VPN/vpn.sh'
 alias scratch='nvim /tmp/scratch.md'
 alias hg='history 1 | grep'
-alias ven='sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"'
 alias sdn='shutdown now'
-
-# alias ls='ls --color=auto'
-# alias ll='ls -lF --color=auto'
-# alias la='ls -A --color=auto'
-# alias l='ls -CF --color=auto'
 
 alias ls='eza'
 alias ll='eza -lF'
@@ -116,13 +111,14 @@ mkcd() {
   mkdir -p "$1" && cd "$1"
 }
 
-# Add empty line before each prompt
-precmd() {
-    print ""
-}
+
+v() { nvim "${1:-.}"; }
 
 # Initialize zoxide
 eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
+
+
+export MANPAGER="nvim +Man!"
