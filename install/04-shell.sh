@@ -2,8 +2,8 @@
 
 source "$GROOB_DIR/install/core.sh"
 
-PLUGINS_DIR="$USER_HOME/.local/share/groob/dots/zsh/plugins"
-THEMES_DIR="$USER_HOME/.local/share/groob/dots/zsh/themes"
+PLUGINS_DIR="$GROOB_DIR/dots/zsh/plugins"
+THEMES_DIR="$GROOB_DIR/dots/zsh/themes"
 
 mkdir -p "$PLUGINS_DIR" "$THEMES_DIR"
 
