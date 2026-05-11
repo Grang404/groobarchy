@@ -75,7 +75,7 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     flow:                        horizontal;
-    
+
     spacing:                     1.2em;
     margin:                      0px;
     padding:                     0px;
@@ -238,4 +238,3 @@ error-message {
     background-color:            @background-colour;
     text-color:                  @foreground-colour;
 }
-
