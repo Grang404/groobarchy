@@ -1,8 +1,8 @@
-export GROOB_DIR="$HOME/.local/share/groobarchy/"
+export GROOB_DIR="$HOME/.local/share/groobarchy"
 export DOTS="$GROOB_DIR/dots"
 export PATH="$GROOB_DIR/bin:$PATH"
 export GROOB_ZSH_DIR="$DOTS/zsh"
-export EZA_CONFIG_DIR="$DOTS/eza/"
+export EZA_CONFIG_DIR="$DOTS/eza"
 
 export EDITOR='nvim'
 export ARCHFLAGS="-arch $(uname -m)"

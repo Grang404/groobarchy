@@ -12,7 +12,7 @@ GROOB_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) || {
 	exit 1
 }
 
-EXPECTED_DIR=$USER_HOME/.local/share/groob
+EXPECTED_DIR=$USER_HOME/.local/share/groobarchy
 
 if [[ "$GROOB_DIR" != "$EXPECTED_DIR" ]]; then
 	echo "Moving repo to $EXPECTED_DIR..."
