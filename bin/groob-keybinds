@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-CONFIG_FILE="$HOME/.local/groob/dots/hypr/shared/keybinds.conf"
-PROFILE_CONFIG_FILE="$HOME/.local/dots/hypr/$PROFILE/device-keybinds.conf"
-ROFI_THEME_DIR="$HOME/.local/dots/rofi/themes"
+CONFIG_FILE="$DOTS/hypr/shared/keybinds.conf"
+PROFILE_CONFIG_FILE="$DOTS/hypr/$PROFILE/device-keybinds.conf"
+ROFI_THEME_DIR="$DOTS/rofi/themes"
 ROFI_THEME="keybinds"
 
 if ! command -v rofi &>/dev/null; then

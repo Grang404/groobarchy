@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dir="$GROOB_DIR/dots/rofi"
+dir="$DOTS/rofi"
 theme='groobofi'
 
 rofi \

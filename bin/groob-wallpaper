@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-WALLPAPER_DIR="$HOME/Pictures/wallpapers"
-THEME_FILE="$HOME/.config/rofi/themes/wallpaper.rasi"
+WALLPAPER_DIR="$GROOB_DIR/wallpapers"
+THEME_FILE="$DOTS/rofi/themes/wallpaper.rasi"
 
 cd "$WALLPAPER_DIR" || exit
 selected=$(for file in *; do
