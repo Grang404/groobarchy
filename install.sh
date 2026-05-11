@@ -40,9 +40,9 @@ PROFILE=${PROFILE:-$(detect_platform)}
 GPU=${GPU:-$(detect_gpu)}
 export PROFILE GPU
 
-mkdir -p "$USER_HOME/.config/groob"
-echo "export PROFILE=$PROFILE" >"$USER_HOME/.config/groob/env"
-echo "export GPU=$GPU" >>"$USER_HOME/.config/groob/env"
+mkdir -p "$USER_HOME/.config/groobarchy"
+echo "export PROFILE=$PROFILE" >"$USER_HOME/.config/groobarchy/env"
+echo "export GPU=$GPU" >>"$USER_HOME/.config/groobarchy/env"
 
 LOG_FILE=$GROOB_DIR/logs/install.log
 mkdir -p "$GROOB_DIR/logs"
