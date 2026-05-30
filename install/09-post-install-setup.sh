@@ -4,8 +4,12 @@ BOOT_SCRIPT=$GROOB_DIR/install/post-install.sh
 
 chmod +x "$BOOT_SCRIPT"
 
-echo "$SUDO_USER ALL=(ALL) NOPASSWD: $BOOT_SCRIPT" >/etc/sudoers.d/groob-boot-setup
+print_warning "DEBUG: SUDO_USER=$SUDO_USER"
+print_warning "DEBUG: MAKING SUDO FILE"
+echo "$SUDO_USER ALL=(ALL) NOPASSWD: $GROOB_DIR/install/groob-boot-setup.sh" >/etc/sudoers.d/groob-boot-setup
 chmod 440 /etc/sudoers.d/groob-boot-setup
+print_warning "DEBUG: SUDO FILE SHOULD BE REAL"
+ls /etc/sudoers.d/
 
 echo "exec-once = sudo $BOOT_SCRIPT" >>"$USER_HOME/.config/hypr/hyprland.conf"
 
