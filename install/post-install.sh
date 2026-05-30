@@ -9,4 +9,4 @@ yes | hyprpm add https://github.com/outfoxxed/hy3
 "$GROOB_DIR/bin/groob-randompaper"
 
 sed -i '/post-install/d' "$HOME/.config/hypr/hyprland.conf"
-rm -f /etc/sudoers.d/groob-post-install
+sudo rm -f /etc/sudoers.d/groob-post-install
