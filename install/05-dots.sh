@@ -32,4 +32,6 @@ done
 # mimelist
 link "$DOTS/mimeapps.list" "$CONFIG/mimeapps.list"
 
+link "$GROOD_DIR/wallpapers" "$USER_HOME/pictures/wallpapers"
+
 print_success "dotfiles linked"
