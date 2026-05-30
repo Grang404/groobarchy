@@ -37,5 +37,6 @@ link() {
 		rm -rf "$tgt"
 	}
 	ln -sf "$src" "$tgt"
+	[[ -n "$SUDO_USER" ]] && chown -h "$SUDO_USER" "$tgt"
 	print_msg "Linked $(basename "$src") → $tgt"
 }
