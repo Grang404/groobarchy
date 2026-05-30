@@ -34,6 +34,6 @@ link "$DOTS/mimeapps.list" "$CONFIG/mimeapps.list"
 
 mkdir -p "$USER_HOME/pictures"
 [[ -n "$SUDO_USER" ]] && chown "$SUDO_USER" "$USER_HOME/pictures"
-link "$GROOD_DIR/wallpapers" "$USER_HOME/pictures/wallpapers"
+link "$GROOB_DIR/wallpapers" "$USER_HOME/pictures/wallpapers"
 
 print_success "dotfiles linked"
