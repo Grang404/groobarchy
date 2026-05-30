@@ -6,7 +6,7 @@ chmod +x "$BOOT_SCRIPT"
 
 print_warning "DEBUG: SUDO_USER=$SUDO_USER"
 print_warning "DEBUG: MAKING SUDO FILE"
-echo "$SUDO_USER ALL=(ALL) NOPASSWD: $GROOB_DIR/install/groob-boot-setup.sh" >/etc/sudoers.d/groob-boot-setup
+echo "$SUDO_USER ALL=(ALL) NOPASSWD: $GROOB_DIR/install/post-install.sh" >/etc/sudoers.d/groob-boot-setup
 chmod 440 /etc/sudoers.d/groob-boot-setup
 print_warning "DEBUG: SUDO FILE SHOULD BE REAL"
 ls /etc/sudoers.d/
