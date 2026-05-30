@@ -12,7 +12,7 @@ chmod 440 /etc/sudoers.d/groob-boot-setup
 print_warning "DEBUG: SUDO FILE SHOULD BE REAL"
 ls /etc/sudoers.d/
 
-echo "exec-once = sudo $BOOT_SCRIPT" >>"$USER_HOME/.config/hypr/hyprland.conf"
+echo "exec-once = $BOOT_SCRIPT" >>"$USER_HOME/.config/hypr/hyprland.conf"
 
 print_success "Post install script set up"
 print_warning "Rebooting..."
