@@ -8,7 +8,7 @@ print_warning "DEBUG: SUDO_USER=$SUDO_USER"
 print_warning "DEBUG: MAKING SUDO FILE"
 
 USER_BOOT=$(realpath "$BOOT_SCRIPT")
-echo "$SUDO_USER ALL=(ALL) NOPASSWD: $RESOLVED_BOOT" >/etc/sudoers.d/groob-post-install
+echo "$SUDO_USER ALL=(ALL) NOPASSWD: $USER_BOOT" >/etc/sudoers.d/groob-post-install
 chmod 440 /etc/sudoers.d/groob-boot-setup
 print_warning "DEBUG: SUDO FILE SHOULD BE REAL"
 ls /etc/sudoers.d/
