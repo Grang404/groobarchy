@@ -128,8 +128,6 @@ main() {
 
 	shopt -u nullglob
 
-	print_success "Install complete"
-	print_warning "Reboot recommended"
 }
 
 main
