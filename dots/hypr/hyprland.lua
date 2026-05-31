@@ -2,7 +2,7 @@ package.path = os.getenv("HOME") .. "/.local/share/groobarchy/dots/hypr/?.lua;" 
 
 local profile = os.getenv("PROFILE")
 
-require("shared/en")
+require("shared/env")
 require("shared/autostart")
 require("shared/general")
 require("shared/devices")
