@@ -1,5 +1,11 @@
 -- layerrule = blur on, match:namespace waybar
 
+hl.layer_rule({
+	match = { namespace = "rofi" },
+	blur = true,
+	ignore_alpha = 0.5,
+})
+
 hl.window_rule({
 	name = "steam",
 	match = {
