@@ -1,0 +1,11 @@
+hl.config({
+	plugin = {
+		hy3 = {
+			autotile = {
+				enable = true,
+				trigger_width = 640,
+				trigger_height = 0,
+			},
+		},
+	},
+})
