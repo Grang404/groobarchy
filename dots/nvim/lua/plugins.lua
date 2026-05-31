@@ -259,6 +259,14 @@ require("lazy").setup({
 						client.server_capabilities.documentFormattingProvider = false
 					end,
 				},
+
+				bashls = {
+					settings = {
+						bashIde = {
+							globPattern = "**/*@(.sh|.inc|.bash|.command)",
+						},
+					},
+				},
 			}
 
 			require("mason").setup()

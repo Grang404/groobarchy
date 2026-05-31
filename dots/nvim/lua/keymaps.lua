@@ -15,6 +15,8 @@ vim.keymap.set("n", "<leader>wq", ":bd<CR>:e .<CR>", { desc = "Quit to directory
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "[B]uffer [N]ext" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "[B]uffer [P]revious" })
 
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+
 -- Terminal
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
