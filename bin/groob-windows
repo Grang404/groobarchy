@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+dir="$DOTS/rofi"
+theme='windows'
+
+rofi \
+	-show window \
+	-theme "${dir}/${theme}.rasi"

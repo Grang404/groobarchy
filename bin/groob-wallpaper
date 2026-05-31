@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 WALLPAPER_DIR="$GROOB_DIR/wallpapers"
-THEME_FILE="$DOTS/rofi/themes/wallpaper.rasi"
+ROFI_THEME_FILE="$DOTS/rofi/"
+ROFI_THEME="wallpaper"
 
 cd "$WALLPAPER_DIR" || exit
 selected=$(for file in *; do
 	printf '%s\0icon\x1f%s\n' "$file" "$file"
-done | rofi -dmenu -show-icons -theme "$THEME_FILE" -p "wallpaper")
+done | rofi -dmenu -show-icons -theme "${ROFI_THEME_FILE}/${ROFI_THEME}" -p "wallpaper")
 
 [ -n "$selected" ] && awww img "$WALLPAPER_DIR/$selected" --resize=crop --transition-type=wipe --transition-angle=30 --transition-step=20 --transition-fps=60

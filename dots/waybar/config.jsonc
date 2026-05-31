@@ -77,7 +77,7 @@
     },
 
     "custom/vpn": {
-        "exec": "~/dotfiles/dots//scripts/vpn",
+        "exec": "groob-vpn",
         "interval": 5,
         "return-type": "json",
         "tooltip": false
@@ -151,7 +151,7 @@
   },
 
 "custom/capslock": {
-    "exec": "~/dotfiles/dots/scripts/capslock",
+    "exec": "groob-capslock",
     "interval": 2,
     "return-type": "json",
     "format": "{}",

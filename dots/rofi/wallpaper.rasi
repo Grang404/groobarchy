@@ -6,8 +6,7 @@ configuration {
 	}
 }
 
-@import                          "../colors.rasi"
-
+@import "colors.rasi"
 * {
     font: "JetBrains Mono Nerd Font 10";
 

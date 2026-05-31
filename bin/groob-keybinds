@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-CONFIG_FILE="$DOTS/hypr/shared/keybinds.conf"
-PROFILE_CONFIG_FILE="$DOTS/hypr/$PROFILE/device-keybinds.conf"
-ROFI_THEME_DIR="$DOTS/rofi/themes"
+CONFIG_FILE="$DOTS/hypr/shared/keybinds.lua"
+PROFILE_CONFIG_FILE="$DOTS/hypr/$PROFILE/device-keybinds.lua"
+ROFI_THEME_DIR="$DOTS/rofi"
 ROFI_THEME="keybinds"
 
 if ! command -v rofi &>/dev/null; then
@@ -18,30 +18,43 @@ fi
 extract_keybinds() {
 	local file="$1"
 	[[ ! -f "$file" ]] && return
-	awk -F= '
-		/^[[:space:]]*bind[[:space:]]*=/ {
-			desc = ""
-			if (match($0, /#[[:space:]]*(.+)$/, arr)) desc = arr[1]
+	awk '
+		/-- KEYBINDS_SKIP_START/ { skip = 1; next }
+		/-- KEYBINDS_SKIP_END/   { skip = 0; next }
+		skip { next }
 
-			line = $2
-			gsub(/^[[:space:]]+|[[:space:]]+$/, "", line)
-			n = split(line, parts, ",")
-			for (i = 1; i <= n; i++) gsub(/^[[:space:]]+|[[:space:]]+$/, "", parts[i])
-			if (n >= 3) {
-				if (desc != "") {
-					action = desc
-				} else {
-					action = parts[3]
-					for (i = 4; i <= n; i++) action = action "," parts[i]
-				}
-				printf "%-20s → %s\n", parts[1] "+" parts[2], action
-			} else {
-				printf "%-20s → %s\n", "Unknown", line
+		/--[[:space:]]*KEYBIND:[[:space:]]*/ {
+			if (match($0, /--[[:space:]]*KEYBIND:[[:space:]]*([^→]+)[[:space:]]*→[[:space:]]*(.+)$/, arr)) {
+				gsub(/^[[:space:]]+|[[:space:]]+$/, "", arr[1])
+				gsub(/^[[:space:]]+|[[:space:]]+$/, "", arr[2])
+				printf "%-40s → %s\n", arr[1], arr[2]
 			}
+			next
+		}
+
+		/hl\.bind[a-z]*[[:space:]]*\(/ {
+			desc = ""
+			if (match($0, /--[[:space:]]*(.+)$/, arr)) desc = arr[1]
+
+			if (match($0, /hl\.bind[a-z]*[[:space:]]*\([[:space:]]*"([^"]+)"/, arr)) {
+				keys = arr[1]
+			} else {
+				keys = "Unknown"
+			}
+
+			if (desc != "") {
+				action = desc
+			} else if (match($0, /,[[:space:]]*(.+)\)[[:space:]]*(--.*)?$/, arr)) {
+				action = arr[1]
+				gsub(/[[:space:]]*\)[[:space:]]*$/, "", action)
+			} else {
+				action = "?"
+			}
+
+			printf "%-40s → %s\n", keys, action
 		}
 	' "$file"
 }
-
 main() {
 	local keybinds
 	keybinds=$(extract_keybinds "$CONFIG_FILE")
