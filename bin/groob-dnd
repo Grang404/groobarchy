@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if makoctl mode | grep -q "dnd"; then
+    echo '{"text":"󰂛","class":"dnd-on"}'
+else
+    echo '{"text":"󰂚","class":"dnd-off"}'
+fi

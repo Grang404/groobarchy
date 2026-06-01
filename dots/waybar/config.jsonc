@@ -10,7 +10,7 @@
 
     "modules-center": ["clock"],
 
-    "modules-right": ["custom/capslock", "custom/vpn", "memory", "custom/separator", "cpu", "custom/separator", "temperature","custom/separator", "pulseaudio","custom/separator", "network"],
+    "modules-right": ["custom/capslock", "custom/dnd", "custom/vpn", "memory", "custom/separator", "cpu", "custom/separator", "temperature","custom/separator", "pulseaudio","custom/separator", "network"],
 
 
     "hyprland/workspaces": {
@@ -49,6 +49,14 @@
         "tooltip": false
     },
 
+    "custom/dnd": {
+        "exec": "groob-dnd",
+        "interval": 5,
+        "return-type": "json",
+        "tooltip": false,
+        "on-click": "groob-toggle-dnd"
+    },
+
     "custom/vpn": {
         "exec": "groob-vpn",
         "interval": 5,
@@ -76,7 +84,7 @@
     "cpu": {
             "interval": 5,
             "tooltip": false,
-            "format": "  {usage}%",
+            "format": "  {usage:02}%",
             "format-alt": "{load}",
             "states": {
                     "warning": 70,

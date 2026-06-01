@@ -72,6 +72,7 @@ window#waybar {
 #temperature,
 #cpu,
 #memory,
+#custom-dnd,
 #custom-vpn,
 #custom-capslock {
   color: @foreground;
@@ -80,13 +81,23 @@ window#waybar {
   background-color: transparent;
 }
 
+#custom-dnd {
+  margin-right: 5px;
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+
+#custom-dnd.dnd-on {
+  color: @red;
+}
 
 #custom-vpn {
   margin-right: 5px;
 }
 
 #pulseaudio {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #pulseaudio.muted {
