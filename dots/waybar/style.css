@@ -1,60 +1,64 @@
 @define-color background #0a0a0a;
-@define-color background-light #131314;
+@define-color background-alt #131314;
 @define-color foreground #c9c7cd;
-@define-color foreground-dim #757581;
+@define-color foreground-dim #4f4f57;
 @define-color red #d44657;
 @define-color yellow #f0c5a9;
-@define-color magenta #f591b2;
+@define-color green #9dc6ac;
 
 * {
   font-family: "JetBrainsMono Nerd Font", monospace;
   border: none;
   border-radius: 0;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   min-height: 0;
 }
 
 window#waybar {
-  background-color: rgba(12, 10, 10, 0);
+  background-color: transparent;
   color: @foreground;
+}
+
+.modules-left, .modules-center, .modules-right {
+    background: @background;
+    border-radius: 5px;
+    border: 1px solid #131314;
+    margin: 5px;
+    padding: 0 10px;
 }
 
 #workspaces button {
   padding: 0 5px;
   border-top: 1px solid transparent;
   background-color: transparent;
-  color: @foreground-dim;
+  color: @foreground;
   margin: 0;
 }
 
 #workspaces button:hover {
-  background: @background-light;
+  background: @background-alt;
   color: @foreground;
+}
+
+#workspaces button.empty {
+  background-color: transparent;
+  color: @foreground-dim;
 }
 
 #workspaces button.active {
-  border-top: 1px solid @foreground-dim;
   background-color: transparent;
   color: @foreground;
+  animation: fade-in 0.1s;
 }
 
 #workspaces button.urgent {
-  color: @red;
-  animation-name: blink-urgent;
-  animation-duration: 1s;
+  color: @foreground;
+  animation-name: blink-red;
+  animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-}
-
-@keyframes blink-urgent {
-  from {
-    color: @red;
-  }
-  to {
-    color: transparent;
-  }
 }
 
 #custom-separator {
@@ -71,21 +75,26 @@ window#waybar {
 #custom-vpn,
 #custom-capslock {
   color: @foreground;
-  padding: 0 5px;
+  padding: 0 5px 0 5px;
   margin: 0;
   background-color: transparent;
 }
+
 
 #custom-vpn {
   margin-right: 5px;
 }
 
 #pulseaudio {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 #pulseaudio.muted {
-  color: @foreground-dim;
+  color: @red;
+}
+
+#network {
+  font-size: 14px;
 }
 
 #network.disconnected {
@@ -94,22 +103,23 @@ window#waybar {
 
 #cpu.warning,
 #memory.warning,
-#temperature.critical {
+#temperature.warning {
   color: @yellow;
 }
 
 #cpu.critical,
-#memory.critical {
+#memory.critical,
+#temperature.critical {
   color: @red;
   animation-name: blink-red;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
 #custom-capslock.active {
-  color: @magenta;
+  color: @yellow;
   font-size: 20px;
   padding: 0 7px 0 6px;
 }
@@ -123,7 +133,7 @@ window#waybar {
 #battery.critical:not(.charging) {
   color: @red;
   animation-name: blink-red;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -138,4 +148,9 @@ window#waybar {
     background-color: @red;
     color: @background;
   }
+}
+
+@keyframes fade-in {
+    from { opacity: 0.4; }
+    to   { opacity: 1; }
 }

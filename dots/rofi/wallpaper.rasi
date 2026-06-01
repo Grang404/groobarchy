@@ -110,12 +110,3 @@ element-icon {
 element-text {
     enabled: false;
 }
-
-error-message {
-    padding:                     10px;
-    border:                      2px solid;
-    border-radius:               10px;
-    border-color:                @border-colour;
-    background-color:            @background-colour;
-    text-color:                  @foreground-colour;
-}
