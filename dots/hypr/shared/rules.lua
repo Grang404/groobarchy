@@ -6,6 +6,13 @@ hl.layer_rule({
 	ignore_alpha = 0.5,
 })
 
+hl.layer_rule({
+	match = { namespace = "notifications" },
+	blur = true,
+	ignore_alpha = 0.5,
+	animation = "slide",
+})
+
 hl.window_rule({
 	name = "steam",
 	match = {
