@@ -11,20 +11,12 @@ configuration {
 
 window {
     location:                    center;
-    anchor:                      center;
     fullscreen:                  true;
     width:                       100%;
     x-offset:                    0px;
     y-offset:                    0px;
-
-    enabled:                     true;
-    margin:                      0px;
-    padding:                     4em;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @border-colour;
-    cursor:                      "default";
-    background-color:            transparent;
+    border-radius:		 0px;
+    padding:                     2em;
     spacing:                     1em;
     children:                    [ "wrap", "listview-split" ];
 }
@@ -38,8 +30,8 @@ listview-split {
 
 listview {
     enabled:                     true;
-    columns:                     7;
-    lines:                       5;
+    columns:                     6;
+    lines:                       0;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -54,7 +46,7 @@ listview {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @border-colour;
+    border-color:                @border;
     background-color:            transparent;
     text-color:                  @foreground-colour;
     cursor:                      "default";
@@ -66,54 +58,12 @@ wrap {
     orientation:                 vertical;
     spacing:                     0px;
     margin:                      0px;
-    padding:                     0px;
-    border:                      3px solid;
-    border-radius:               0.6em;
-    border-color:                @border-colour;
+    padding:                     5px;
+    border:                      2px solid;
+    border-radius:               5px;
+    border-color:                @border;
     background-color:            transparent;
     children:                    [ "inputbar" ];
-}
-
-mode-switcher {
-    enabled:                     false;
-}
-
-inputbar {
-    enabled:                     true;
-    spacing:                     10px;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @border-colour;
-    background-color:            transparent;
-    text-color:                  @foreground-colour;
-    children:                    [ "textbox-prompt-colon", "entry"];
-}
-
-prompt {
-    enabled:                     true;
-    background-color:            inherit;
-    text-color:                  inherit;
-}
-
-textbox-prompt-colon {
-    enabled:                     true;
-    padding:                     5px 0px;
-    expand:                      false;
-    str:                         "  ";
-    background-color:            inherit;
-    text-color:                  inherit;
-}
-
-entry {
-    enabled:                     true;
-    padding:                     5px 0px;
-    background-color:            inherit;
-    text-color:                  inherit;
-    cursor:                      text;
-    placeholder:                 "Search wallpapers...";
-    placeholder-color:           inherit;
 }
 
 element {
@@ -123,10 +73,9 @@ element {
     margin:                      0px;
     padding:                     0px;
     border:                      2px solid;
-    border-radius:               0.6em;
+    border-radius:               5px;
     border-color:                transparent;
     background-color:            @background-alt;
-    text-color:                  @foreground-colour;
     cursor:                      pointer;
     children:                    [ "element-icon", "element-text" ];
 }
@@ -135,72 +84,31 @@ element-index {
     enabled:                     false;
 }
 
-element normal.normal {
-    text-color:                  @normal-foreground;
-    background-color:            transparent;
-    border-color:                transparent;
-}
-
-element normal.urgent {
-    text-color:                  @urgent-foreground;
-}
-
-element normal.active {
-    background-color:            @active-background;
-    text-color:                  @active;
-}
-
 element selected.normal {
-    text-color:                  @selected;
     background-color:            transparent;
-    border-color:                @selected;
-}
-
-element selected.urgent {
-    background-color:            @selected-urgent-background;
-    text-color:                  @selected-urgent-foreground;
+    border-color:                @active;
 }
 
 element selected.active {
-    background-color:            @selected-active-background;
-    text-color:                  @selected-active-foreground;
+    background-color:            transparent;
 }
 
 element alternate.normal {
-    text-color:                  @alternate-normal-foreground;
     background-color:            transparent;
     border-color:                transparent;
 }
 
-element alternate.urgent {
-    background-color:            @alternate-urgent-background;
-    text-color:                  @alternate-urgent-foreground;
-}
-
-element alternate.active {
-    background-color:            @alternate-active-background;
-    text-color:                  @alternate-active-foreground;
-}
 
 element-icon {
     background-color:            transparent;
-    text-color:                  inherit;
     size:                        calc(((100% - 1.2em) / 5 ));
     cursor:                      inherit;
     horizontal-align:            0.5;
     vertical-align:              0.5;
-    border-radius:               0.4em 0.4em 0em 0em;
 }
 
 element-text {
-    background-color:            transparent;
-    text-color:                  inherit;
-    highlight:                   inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
-    padding:                     0.5em;
-    border-radius:               0em 0em 0.4em 0.4em;
+    enabled: false;
 }
 
 error-message {
