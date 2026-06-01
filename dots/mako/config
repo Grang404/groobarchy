@@ -1,0 +1,23 @@
+history=1
+max-history=25
+sort=-time
+default-timeout=5000
+max-visible=5
+anchor=top-right
+
+font=JetBrainsMono 10
+width=300
+height=150
+margin=10
+padding=10
+background-color=#131314f2
+text-color=#c9c7cdff
+border-color=#4f4f57ff
+border-size=1
+border-radius=5
+progress-color=over #4f4f57ff
+
+icons=0
+
+[mode=dnd]
+invisible=1
