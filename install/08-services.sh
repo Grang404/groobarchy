@@ -2,12 +2,17 @@
 source "$GROOB_DIR/install/core.sh"
 [[ -z "$PROFILE" ]] && die "PROFILE is not set"
 
-print_msg "enabling system services..."
+print_msg "Enabling system services..."
 
 system_services=(
 	"cronie.service"
+	# TODO: enable this when not testing
 	# "lm_sensors.service"
 	"fstrim.timer"
+)
+
+desktop_services=(
+	"NetworkManager"
 )
 
 laptop_services=(
@@ -18,6 +23,7 @@ laptop_services=(
 
 services=("${system_services[@]}")
 [[ "$PROFILE" == "laptop" ]] && services+=("${laptop_services[@]}")
+[[ "$PROFILE" == "desktop" ]] && services+=("${desktop_services[@]}")
 
 for service in "${services[@]}"; do
 	if ! systemctl list-unit-files | grep -q "^$service"; then
@@ -25,10 +31,10 @@ for service in "${services[@]}"; do
 		continue
 	fi
 	systemctl enable --now "$service" || {
-		print_warning "failed to enable $service"
+		print_warning "Failed to enable $service"
 		continue
 	}
-	print_success "enabled $service"
+	print_success "Enabled $service"
 done
 
-print_success "services done"
+print_success "Services started"
