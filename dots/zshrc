@@ -6,6 +6,7 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=50000
 LISTMAX=50000
+
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST    # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt HIST_IGNORE_DUPS          # ignore duplicated commands history list
@@ -96,9 +97,9 @@ bindkey "^[[3;5~" kill-word         # Ctrl+Delete
 
 # Aliases
 alias vim='nvim'
-alias todo='nvim ~/Documents/tasks.md'
+alias todo='nvim ~/docs/tasks.md'
 alias venv='[[ -d .venv ]] && source .venv/bin/activate || python -m venv .venv && source .venv/bin/activate'
-alias vpn='~/VPN/vpn.sh'
+alias vpn='~/VPN/vpn.py'
 alias scratch='nvim /tmp/scratch.md'
 alias hg='history 1 | grep'
 alias sdn='shutdown now'
