@@ -1,8 +1,11 @@
-local terminal = "ghostty"
+-- local terminal = "ghostty"
+local terminal = "alacritty"
+local cwd = "groob-cwd"
 local browser = "firefox"
 local hyprshot_region = "hyprshot -m region --clipboard-only"
 
 hl.bind("SUPER + RETURN", hl.dsp.exec_cmd(terminal)) -- Terminal
+hl.bind("SUPER + CONTROL + RETURN", hl.dsp.exec_cmd("groob-cwd")) -- Terminal
 hl.bind("SUPER + B", hl.dsp.exec_cmd(browser)) -- Browser
 hl.bind("SUPER + R", hl.dsp.exec_cmd("groobofi")) -- App Menu
 hl.bind("SUPER + W", hl.dsp.exec_cmd("groob-windows")) -- App Menu

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+pid=$(hyprctl activewindow -j | jq -r .pid)
+child=$(pgrep -P $pid | tail -1)
+cwd=$(readlink /proc/${child:-$pid}/cwd 2>/dev/null || echo ~)
+exec alacritty --working-directory "$cwd"
