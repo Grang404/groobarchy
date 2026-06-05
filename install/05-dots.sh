@@ -22,6 +22,7 @@ done
 mkdir -p "$CONFIG/hypr"
 
 for f in "$DOTS/hypr"/*.conf; do link "$f" "$CONFIG/hypr/$(basename "$f")"; done
+for f in "$DOTS/hypr"/*.lua; do link "$f" "$CONFIG/hypr/$(basename "$f")"; done
 shopt -u nullglob
 
 # home dotfiles
