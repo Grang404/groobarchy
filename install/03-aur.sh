@@ -51,7 +51,7 @@ install_aur_packages() {
 	fi
 
 	print_msg "Installing AUR packages..."
-	sudo -u "$SUDO_USER" paru -S --needed --noconfirm "${pkgs[@]}" || {
+	sudo -u "$SUDO_USER" paru -S --needed --noconfirm --skipreview --noprogressbar "${pkgs[@]}" || {
 		die "Failed to install AUR packages"
 	}
 
