@@ -36,8 +36,6 @@ install_paru() {
 	trap cleanup EXIT
 	sudo -u "$SUDO_USER" bash -c "cd $paru_dir && makepkg -si --noconfirm" || die "Failed to install Paru"
 
-	rm -f "$sudoers_drop" || print_warning "Failed to remove $sudoers_drop"
-
 	print_success "paru installed"
 }
 
@@ -62,3 +60,5 @@ install_aur_packages() {
 
 install_paru
 install_aur_packages
+
+rm -f "$sudoers_drop" || print_warning "Failed to remove $sudoers_drop"
