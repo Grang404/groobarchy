@@ -8,7 +8,7 @@ source "$GROOB_DIR/install/detect.sh"
 DOTS="$GROOB_DIR/dots"
 CONFIG="$USER_HOME/.config"
 
-[[ -d "$DOTS" ]] || die "dots directory not found: $DOTS"
+[[ -d "$DOTS" ]] || die "Dotfiles directory not found: $DOTS"
 
 # config dirs
 shopt -s nullglob
@@ -37,4 +37,4 @@ mkdir -p "$USER_HOME/pictures"
 [[ -n "$SUDO_USER" ]] && chown "$SUDO_USER" "$USER_HOME/pictures"
 link "$GROOB_DIR/wallpapers" "$USER_HOME/pictures/wallpapers"
 
-print_success "dotfiles linked"
+print_success "Dotfiles linked"

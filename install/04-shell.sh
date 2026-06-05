@@ -27,4 +27,4 @@ clone_if_missing https://github.com/zsh-users/zsh-syntax-highlighting "$PLUGINS_
 clone_if_missing https://github.com/romkatv/powerlevel10k "$THEMES_DIR/powerlevel10k"
 
 chsh -s /usr/bin/zsh "$SUDO_USER"
-print_success "ZSH configured"
+print_success "zsh configured"
