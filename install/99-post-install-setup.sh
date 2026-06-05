@@ -17,7 +17,10 @@ chmod 440 /etc/sudoers.d/groob-post-install || die "Failed to chmod sudoers"
 if ! awk -v cmd="$BOOT_SCRIPT" '/^end\)/{print "\thl.exec_cmd(\""cmd"\")"}1' "$AUTOSTART" >/tmp/autostart.lua; then
 	die "Failed to patch autostart.lua"
 fi
+
 mv /tmp/autostart.lua "$AUTOSTART" || die "Failed to move autostart.lua"
+
+sed -i 's/^require("shared\/hy3")/--require("shared\/hy3")/' "$DOTS/hypr/hyprland.lua"
 
 print_success "Post install script set up"
 print_warning "Rebooting..."

@@ -29,9 +29,12 @@ sudo mv /tmp/autostart.lua "$AUTOSTART" || {
 	exit 1
 }
 
-sudo chown "$(id -un)" "$AUTOSTART"
+sudo chown "$(id -un)" "$AUTOSTART" || notify-send "Groobarchy" "Failed to chown $AUTOSTART"
+hyprctl reload || notify-send "Groobarchy" "Failed to hyprctl reload"
 
 sudo rm -f /etc/sudoers.d/groob-post-install
+
+sed -i 's/^--require("shared\/hy3")/require("shared\/hy3")/' "$DOTS/hypr/hyprland.lua"
 
 notify-send "Groobarchy" "Groobarchy post-setup finished!"
 "$GROOB_DIR/bin/groob-randompaper"
