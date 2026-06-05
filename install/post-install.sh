@@ -2,6 +2,7 @@
 exec >"$GROOB_DIR/logs/post-install.log" 2>&1
 
 AUTOSTART="$DOTS/hypr/shared/autostart.lua"
+BOOT_SCRIPT="$GROOB_DIR/install/post-install.sh"
 
 notify-send "Groobarchy" "Groobarchy post-setup starting..."
 
