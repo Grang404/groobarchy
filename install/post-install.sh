@@ -22,10 +22,13 @@ if ! awk -v cmd="$BOOT_SCRIPT" '!(/hl\.exec_cmd/ && index($0, cmd))' "$AUTOSTART
 	notify-send "Groobarchy" "Failed to patch autostart.lua"
 	exit 1
 fi
+
 mv /tmp/autostart.lua "$AUTOSTART" || {
 	notify-send "Groobarchy" "Failed to move autostart.lua"
 	exit 1
 }
+
+chown "$(id -un)" "$AUTOSTART"
 
 sudo rm -f /etc/sudoers.d/groob-post-install
 
