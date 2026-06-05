@@ -5,7 +5,6 @@ source "$GROOB_DIR/install/detect.sh"
 
 [[ -z "$USER_HOME" ]] && die "could not resolve USER_HOME"
 
-DOTS="$GROOB_DIR/dots"
 CONFIG="$USER_HOME/.config"
 
 [[ -d "$DOTS" ]] || die "Dotfiles directory not found: $DOTS"

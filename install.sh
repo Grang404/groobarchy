@@ -26,6 +26,7 @@ fi
 
 export GROOB_DIR
 export PATH=$GROOB_DIR/bin:$PATH
+export DOTS="$GROOB_DIR/dots"
 
 source "$GROOB_DIR/install/core.sh" || {
 	echo "Failed to source core.sh"
