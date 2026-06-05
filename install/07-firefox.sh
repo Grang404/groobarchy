@@ -14,7 +14,7 @@ if [[ -z "$firefox_profile" ]]; then
 	[[ -z "$firefox_profile" ]] && die "Failed to create Firefox profile"
 fi
 
-cp "$GROOB_DIR/dots/firefox/user.js" "$firefox_profile/user.js" || die "Failed to copy user.js"
+link "$GROOB_DIR/dots/firefox/user.js" "$firefox_profile/user.js" || die "Failed to link user.js"
 chown "$SUDO_USER:$SUDO_USER" "$firefox_profile/user.js"
 
 print_success "Firefox configured"
