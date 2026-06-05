@@ -7,7 +7,7 @@ chmod +x "$BOOT_SCRIPT"
 echo "$SUDO_USER ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/groob-post-install
 chmod 440 /etc/sudoers.d/groob-post-install
 
-echo "exec-once = $BOOT_SCRIPT" >>"$USER_HOME/.config/hypr/hyprland.conf"
+sed -i "s/^end)/\thl.exec_cmd(\"$BOOT_SCRIPT\")\nend)/" "$USER_HOME/.config/hypr/autostart.lua"
 
 print_success "Post install script set up"
 print_warning "Rebooting..."
