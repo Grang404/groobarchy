@@ -8,5 +8,5 @@ notify-send "groobarchy setup complete"
 
 "$GROOB_DIR/bin/groob-randompaper"
 
-sed -i "/hl.exec_cmd(\"$BOOT_SCRIPT\")/d" "$HOME/.config/hypr/autostart.lua"
+sed -i "\|hl.exec_cmd(\"$BOOT_SCRIPT\")|d" "$HOME/.config/hypr/autostart.lua"
 sudo rm -f /etc/sudoers.d/groob-post-install
