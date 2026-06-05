@@ -13,7 +13,7 @@ yes | hyprpm add https://github.com/outfoxxed/hy3 || {
 	notify-send "Groobarchy" "hyprpm add failed"
 	exit 1
 }
-hyprpm enable || {
+hyprpm enable hy3 || {
 	notify-send "Groobarchy" "hyprpm enable failed"
 	exit 1
 }
