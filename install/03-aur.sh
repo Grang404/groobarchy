@@ -22,7 +22,7 @@ install_paru() {
 	local paru_dir="/tmp/paru"
 	local sudoers_drop="/etc/sudoers.d/makepkg_tmp"
 
-	git clone https://aur.archlinux.org/paru.git "$paru_dir" || {
+	sudo -u "$SUDO_USER" git clone https://aur.archlinux.org/paru.git "$paru_dir" || {
 		die "Failed to clone paru"
 	}
 
