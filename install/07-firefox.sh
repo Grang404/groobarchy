@@ -9,6 +9,7 @@ firefox_profile=$(find "$USER_HOME/.config/mozilla/firefox" -maxdepth 1 -type d 
 if [[ -z "$firefox_profile" ]]; then
 	print_msg "No profile found, creating one..."
 	sudo -u "$SUDO_USER" timeout 5 firefox --headless >/dev/null 2>&1 || true
+	print_warning "DEBUG: FIRFOX PROFILE: $firefox_profile"
 	sleep 2
 	[[ -z "$firefox_profile" ]] && die "Failed to create Firefox profile"
 fi
