@@ -14,6 +14,7 @@ shopt -s nullglob
 for dir in "$DOTS"/*; do
 	[[ -d "$dir" ]] || continue
 	[[ "$(basename "$dir")" = "hypr" ]] && continue
+	[[ "$(basename "$dir")" = "firefox" ]] && continue
 	link "$dir" "$CONFIG/$(basename "$dir")"
 done
 
