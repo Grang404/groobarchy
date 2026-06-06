@@ -4,8 +4,19 @@ ROFI_THEME_FILE="$DOTS/rofi/"
 ROFI_THEME="wallpaper"
 
 cd "$WALLPAPER_DIR" || exit
+
 selected=$(for file in *; do
 	printf '%s\0icon\x1f%s\n' "$file" "$file"
 done | rofi -dmenu -show-icons -theme "${ROFI_THEME_FILE}/${ROFI_THEME}" -p "wallpaper")
 
-[ -n "$selected" ] && awww img "$WALLPAPER_DIR/$selected" --resize=crop --transition-type=wipe --transition-angle=30 --transition-step=20 --transition-fps=60
+if [ -n "$selected" ]; then
+	transitions=(wipe wave grow outer fade left right top bottom)
+	transition=${transitions[$RANDOM % ${#transitions[@]}]}
+
+	angle=30
+	if [[ "$transition" == "wipe" || "$transition" == "wave" ]]; then
+		angle=$((RANDOM % 360))
+	fi
+
+	awww img "$WALLPAPER_DIR/$selected" --resize=crop --transition-type=$transition --transition-angle=$angle --transition-step=20 --transition-fps=60
+fi
