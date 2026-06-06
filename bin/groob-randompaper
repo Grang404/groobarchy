@@ -1,7 +1,17 @@
 #!/bin/env bash
-
 WALLPAPER_DIR="$GROOB_DIR/wallpapers"
+LAST_FILE="${XDG_RUNTIME_DIR}/awww_last"
 
-file=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
+current=$(cat "$LAST_FILE" 2>/dev/null)
+file=$(find "$WALLPAPER_DIR" -type f | grep -vF "$current" | shuf -n 1)
+echo "$file" >"$LAST_FILE"
 
-awww img --resize=crop --transition-type=wipe --transition-angle=30 --transition-step=20 --transition-fps=60 "$file"
+transitions=(wipe wave grow outer fade left right top bottom)
+transition=${transitions[$RANDOM % ${#transitions[@]}]}
+
+angle=30
+if [[ "$transition" == "wipe" || "$transition" == "wave" ]]; then
+	angle=$((RANDOM % 360))
+fi
+
+awww img --resize=crop --transition-type=$transition --transition-angle=$angle --transition-step=20 --transition-fps=60 "$file"
