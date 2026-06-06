@@ -7,12 +7,30 @@ BOOT_SCRIPT="$GROOB_DIR/install/post-install.sh"
 STEPS=8
 STEP=0
 
+smooth_to() {
+	local target=$1
+	local label=$2
+	local current=$((STEP * 100 / STEPS))
+	local diff=$((target - current))
+	local ticks=10
+	local i
+	for i in $(seq 1 $ticks); do
+		local pct=$((current + diff * i / ticks))
+		notify-send -r "${NOTIF_ID:-0}" \
+			-h int:value:$pct \
+			"Groobarchy" "$label" >/dev/null
+		sleep 0.05
+	done
+}
+
 progress() {
 	STEP=$((STEP + 1))
 	local pct=$((STEP * 100 / STEPS))
+	local label="[${STEP}/${STEPS}] $1"
+	smooth_to $pct "$label"
 	NOTIF_ID=$(notify-send -p -r "${NOTIF_ID:-0}" \
 		-h int:value:$pct \
-		"Groobarchy" "[${STEP}/${STEPS}] $1")
+		"Groobarchy" "$label")
 }
 
 fail() {
@@ -49,6 +67,7 @@ progress "sudoers cleaned, hy3 require uncommented"
 hyprctl reload || notify-send -r "${NOTIF_ID:-0}" -u normal "Groobarchy" "hyprctl reload failed (non-fatal)"
 progress "Hyprland reloaded"
 
+smooth_to 100 "[${STEPS}/${STEPS}] Post-setup finished!"
 notify-send -r "${NOTIF_ID:-0}" -h int:value:100 \
 	"Groobarchy" "[${STEPS}/${STEPS}] Post-setup finished!"
 
