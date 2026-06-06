@@ -3,7 +3,13 @@ WALLPAPER_DIR="$GROOB_DIR/wallpapers"
 LAST_FILE="${XDG_RUNTIME_DIR}/awww_last"
 
 current=$(cat "$LAST_FILE" 2>/dev/null)
-file=$(find "$WALLPAPER_DIR" -type f | grep -vF "$current" | shuf -n 1)
+
+if [ -n "$current" ]; then
+	file=$(find "$WALLPAPER_DIR" -type f | grep -vF "$current" | shuf -n 1)
+else
+	file=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
+fi
+
 echo "$file" >"$LAST_FILE"
 
 transitions=(wipe wave grow outer fade left right top bottom)
