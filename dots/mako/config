@@ -21,3 +21,6 @@ icons=0
 
 [mode=dnd]
 invisible=1
+
+[summary="Groobarchy"]
+default-timeout=0
