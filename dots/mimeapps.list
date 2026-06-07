@@ -19,6 +19,7 @@ audio/flac=mpv.desktop
 audio/ogg=mpv.desktop
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
 inode/directory=thunar.desktop
+x-scheme-handler/discord=vesktop.desktop
 [Added Associations]
 text/html=firefox.desktop
 x-scheme-handler/http=firefox.desktop
