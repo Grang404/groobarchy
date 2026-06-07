@@ -1,3 +1,4 @@
+output=DP-1
 history=1
 max-history=25
 sort=-time
@@ -5,7 +6,7 @@ default-timeout=5000
 max-visible=5
 anchor=top-right
 
-font=JetBrainsMono 12
+font=JetBrainsMono 10
 width=300
 height=150
 margin=15

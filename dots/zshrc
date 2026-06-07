@@ -103,6 +103,7 @@ alias vpn='~/VPN/vpn.py'
 alias scratch='nvim /tmp/scratch.md'
 alias hg='history 1 | grep'
 alias sdn='shutdown now'
+alias rcp='rsync -ah --progress'
 
 alias ls='eza'
 alias ll='eza -lF'
