@@ -22,6 +22,18 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "steam-friends",
+	match = {
+		title = "Friends List",
+	},
+	workspace = 4,
+	no_initial_focus = true,
+	float = true,
+	size = { 360, 680 },
+	move = { 1538, 376 },
+})
+
+hl.window_rule({
 	name = "discord",
 	match = {
 		class = "discord",
@@ -34,9 +46,9 @@ hl.window_rule({
 	match = {
 		class = "org.pulseaudio.pavucontrol",
 	},
-	size = { "(monitor_w * 0.35)", "(monitor_h * 0.5)" },
 	float = true,
-	center = true,
+	size = { 674, 484 },
+	move = { 1241, 46 },
 })
 
 hl.window_rule({

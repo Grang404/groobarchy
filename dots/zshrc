@@ -99,7 +99,7 @@ bindkey "^[[3;5~" kill-word         # Ctrl+Delete
 alias vim='nvim'
 alias todo='nvim ~/docs/tasks.md'
 alias venv='[[ -d .venv ]] && source .venv/bin/activate || python -m venv .venv && source .venv/bin/activate'
-alias vpn='~/VPN/vpn.py'
+alias vpn='~/vpn/vpn.py'
 alias scratch='nvim /tmp/scratch.md'
 alias hg='history 1 | grep'
 alias sdn='shutdown now'
