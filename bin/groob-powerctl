@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+[[ $EUID -ne 0 ]] && exec sudo "$0" "$@"
+
+set_epp() {
+    for f in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
+        echo "$1" > "$f"
+    done
+}
+
+case "$1" in
+    perf)
+        echo performance > /sys/firmware/acpi/platform_profile
+        set_epp performance
+        echo "-> performance"
+        ;;
+    bal_perf)
+        echo balanced > /sys/firmware/acpi/platform_profile
+        set_epp balance_performance
+        echo "-> balanced (performance bias)"
+        ;;
+    bal_pow)
+        echo balanced > /sys/firmware/acpi/platform_profile
+        set_epp balance_power
+        echo "-> balanced (power bias)"
+        ;;
+    thresh)
+        case "$2" in
+            on)
+                tlp setcharge 75 80 BAT0
+                echo "-> thresholds: 75-80%"
+                ;;
+            off)
+                tlp fullcharge BAT0
+                echo "-> thresholds: off (full charge)"
+                ;;
+            *)
+                echo "Usage: $0 thresh [on|off]"
+                ;;
+        esac
+        ;;
+    status)
+        echo "Platform profile : $(cat /sys/firmware/acpi/platform_profile)"
+        echo "EPP              : $(cat /sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference)"
+        echo "Boost            : $(cat /sys/devices/system/cpu/cpufreq/boost)"
+        echo "Charge thresholds: $(cat /sys/class/power_supply/BAT0/charge_control_start_threshold)-$(cat /sys/class/power_supply/BAT0/charge_control_end_threshold)%"
+        ;;
+    *)
+        echo "Usage: $0 <command>"
+        echo ""
+        echo "Power profiles:"
+        echo "  perf       Platform: performance  | EPP: performance"
+        echo "  bal_perf   Platform: balanced     | EPP: balance_performance"
+        echo "  bal_pow    Platform: balanced     | EPP: balance_power"
+        echo ""
+        echo "Battery:"
+        echo "  thresh on  Set charge thresholds 75-80%"
+        echo "  thresh off Remove thresholds (full charge)"
+        echo ""
+        echo "Info:"
+        echo "  status     Show current profile, EPP, boost, and charge thresholds"
+        ;;
+esac
