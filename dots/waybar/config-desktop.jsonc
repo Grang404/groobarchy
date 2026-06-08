@@ -11,7 +11,7 @@
 
     "modules-center": ["clock"],
 
-    "modules-right": ["custom/capslock","custom/dnd", "custom/separator", "custom/vpn", "custom/separator", "memory", "custom/separator", "cpu", "custom/separator", "temperature","custom/separator", "pulseaudio","custom/separator", "network"],
+    "modules-right": ["custom/capslock","custom/dnd", "custom/separator", "custom/vpn", "custom/separator", "battery", "custom/separator", "memory", "custom/separator", "cpu", "custom/separator", "temperature","custom/separator", "pulseaudio","custom/separator", "network"],
 
 
     "hyprland/workspaces": {
@@ -20,8 +20,7 @@
         "all-outputs": false,
         "format": "{icon}",
         "persistent-workspaces": {
-            "DP-1": [1, 2, 3, 4, 5],
-            "DP-2": [6, 7, 8, 9, 10]
+            "eDP-1": [1, 2, 3, 4, 5]
         },
 
         "format-icons": {

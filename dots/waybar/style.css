@@ -135,14 +135,8 @@ window#waybar {
   padding: 0 7px 0 6px;
 }
 
-#battery.charging,
-#battery.plugged {
-  font-size: 18px;
-}
-
 #battery.warning:not(.charging),
 #battery.critical:not(.charging) {
-  color: @red;
   animation-name: blink-red;
   animation-duration: 0.5s;
   animation-timing-function: linear;

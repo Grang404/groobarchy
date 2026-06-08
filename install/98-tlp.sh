@@ -2,7 +2,9 @@
 
 source "$GROOB_DIR/install/core.sh"
 
-if [[ PROFILE != "laptop" ]] && exit 0
+if [[ $PROFILE != "laptop" ]]; then
+	exit 0
+fi
 
 [[ $EUID -ne 0 ]] && exec sudo "$0" "$@"
 
@@ -49,4 +51,4 @@ if [[ $? -ne 0 ]]; then
 	print_warning "Skipping tlp.conf"
 fi
 
-echo "-> written /etc/tlp.conf"
+print_success "Successfully wrote tlp.conf -> /etc/tlp.conf"
