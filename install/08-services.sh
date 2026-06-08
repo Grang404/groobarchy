@@ -6,13 +6,12 @@ print_msg "Enabling system services..."
 
 system_services=(
 	"cronie.service"
-	# TODO: enable this when not testing
-	# "lm_sensors.service"
 	"fstrim.timer"
 )
 
 desktop_services=(
 	"NetworkManager"
+	"lm_sensors.service"
 )
 
 laptop_services=(
