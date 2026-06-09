@@ -1,5 +1,3 @@
--- layerrule = blur on, match:namespace waybar
-
 hl.layer_rule({
 	match = { namespace = "rofi" },
 	blur = true,
@@ -8,8 +6,17 @@ hl.layer_rule({
 
 hl.layer_rule({
 	match = { namespace = "notifications" },
-	blur = true,
-	ignore_alpha = 0.5,
+	-- blur = true,
+	-- ignore_alpha = 0.5,
+})
+
+hl.window_rule({
+	name = "Spotify",
+	match = {
+		class = "Spotify",
+	},
+	workspace = 9,
+	no_initial_focus = true,
 })
 
 hl.window_rule({

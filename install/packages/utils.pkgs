@@ -30,3 +30,5 @@ lm_sensors
 gamemode
 openssh
 noise-suppression-for-voice
+qt6-wayland
+qt5-wayland
