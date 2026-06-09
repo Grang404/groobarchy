@@ -16,7 +16,7 @@
 
     "hyprland/workspaces": {
         // TODO: Uncook this on click
-        "on-click": "activate",.
+        "on-click": "activate",
         "disable-scroll": true,
         "all-outputs": false,
         "format": "{icon}",
