@@ -444,8 +444,12 @@ require("lazy").setup({
 		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
 		opts = {
 			heading = {
-				icons = { " 󰮯 " },
+				icons = { "" },
 				signs = { "󰫎 " },
+				position = "inline",
+				width = "block",
+				left_pad = 4,
+				right_pad = 4,
 			},
 		},
 		keys = {
