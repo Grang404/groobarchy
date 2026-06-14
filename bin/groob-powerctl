@@ -35,7 +35,7 @@ case "$1" in
                 echo "-> thresholds: off (full charge)"
                 ;;
             *)
-                echo "Usage: $0 thresh [on|off]"
+                echo "Usage: groob-powerctl thresh [on|off]"
                 ;;
         esac
         ;;
@@ -46,7 +46,7 @@ case "$1" in
         echo "Charge thresholds: $(cat /sys/class/power_supply/BAT0/charge_control_start_threshold)-$(cat /sys/class/power_supply/BAT0/charge_control_end_threshold)%"
         ;;
     *)
-        echo "Usage: $0 <command>"
+        echo "Usage: groob-powerctl <command>"
         echo ""
         echo "Power profiles:"
         echo "  perf       Platform: performance  | EPP: performance"
