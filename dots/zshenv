@@ -1,5 +1,6 @@
 source "$HOME/.config/groobarchy/env"
 
+export HOW_FILE="$HOME/docs/entries"
 export GROOB_DIR="$HOME/.local/share/groobarchy"
 export DOTS="$GROOB_DIR/dots"
 export PATH="$GROOB_DIR/bin:$HOME/.local/bin:$PATH"
