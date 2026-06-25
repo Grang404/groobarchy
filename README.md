@@ -8,7 +8,7 @@ That said, if you find anything useful in here feel free to take it. No attribut
 
 ## What's in here
 
-- `dots/` - the actual dotfiles (Hyprland, Waybar, Kitty, etc.)
+- `dots/` - the actual dotfiles (Hyprland, Waybar, Alacritty, etc.)
 - `bin/` - small scripts that get linked into `~/.local/bin`
 - `wallpapers/` - wallpapers
 - `install/` - modular install scripts, run in order by `install.sh`
