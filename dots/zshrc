@@ -20,14 +20,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Load powerlevel10k theme
-source "$GROOB_ZSH_DIR/themes/powerlevel10k/powerlevel10k.zsh-theme"
+source "$GROOB_ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme"
 
 # Load zsh plugins
-source "$GROOB_ZSH_DIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$GROOB_ZSH_DIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$GROOB_ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$GROOB_ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Load custom syntax highlighting styles (MUST come after zsh-syntax-highlighting)
-source "$GROOB_ZSH_DIR/highlight_styles.zsh"
+source "$GROOB_ZSH/highlight_styles.zsh"
 
 # Basic zsh options
 setopt AUTO_CD              # cd by typing directory name if it's not a command
