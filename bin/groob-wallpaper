@@ -1,22 +1,45 @@
 #!/usr/bin/env bash
+[[ -f "$HOME/.config/groobarchy/env" ]] && source "$HOME/.config/groobarchy/env"
 WALLPAPER_DIR="$GROOB_DIR/wallpapers"
-ROFI_THEME_FILE="$DOTS/rofi/"
+ROFI_THEME_FILE="$DOTS/rofi"
 ROFI_THEME="wallpaper"
 
 cd "$WALLPAPER_DIR" || exit
 
-selected=$(for file in *; do
-	printf '%s\0icon\x1f%s\n' "$file" "$file"
-done | rofi -dmenu -show-icons -theme "${ROFI_THEME_FILE}/${ROFI_THEME}" -p "wallpaper")
+declare -A seen
 
-if [ -n "$selected" ]; then
-	transitions=(wipe wave grow outer fade left right top bottom)
-	transition=${transitions[$RANDOM % ${#transitions[@]}]}
+selected=$(
+    {
+        for file in *; do
+            [[ -f "$file" ]] || continue
+            seen["$file"]=1
+            printf '%s\0icon\x1f%s\n' "$file" "$WALLPAPER_DIR/$file"
+        done
 
-	angle=30
-	if [[ "$transition" == "wipe" || "$transition" == "wave" ]]; then
-		angle=$((RANDOM % 360))
-	fi
+        if [[ -n "$CUSTOM_WALLPAPER" && -d "$CUSTOM_WALLPAPER" ]]; then
+            while IFS= read -r -d '' file; do
+                fname=$(basename "$file")
+                [[ -n "${seen[$fname]}" ]] && continue
+                printf '%s\0icon\x1f%s\n' "$fname" "$file"
+            done < <(find "$CUSTOM_WALLPAPER" -maxdepth 1 -type f -print0)
+        fi
+    } | rofi -dmenu -show-icons -theme "${ROFI_THEME_FILE}/${ROFI_THEME}" -p "wallpaper"
+)
 
-	awww img "$WALLPAPER_DIR/$selected" --resize=crop --transition-type=$transition --transition-angle=$angle --transition-step=20 --transition-fps=60
+if [[ -n "$selected" ]]; then
+    if [[ -n "$CUSTOM_WALLPAPER" && -f "$CUSTOM_WALLPAPER/$selected" && ! -f "$WALLPAPER_DIR/$selected" ]]; then
+        wall_path="$CUSTOM_WALLPAPER/$selected"
+    else
+        wall_path="$WALLPAPER_DIR/$selected"
+    fi
+
+    transitions=(wipe wave grow outer fade left right top bottom)
+    transition=${transitions[$RANDOM % ${#transitions[@]}]}
+
+    angle=30
+    if [[ "$transition" == "wipe" || "$transition" == "wave" ]]; then
+        angle=$((RANDOM % 360))
+    fi
+
+    awww img "$wall_path" --resize=crop --transition-type=$transition --transition-angle=$angle --transition-step=20 --transition-fps=60
 fi
