@@ -1,5 +1,4 @@
 package.path = os.getenv("HOME") .. "/.local/share/groobarchy/dots/hypr/?.lua;" .. package.path
-
 local profile = os.getenv("PROFILE")
 
 require("shared/autostart")
@@ -16,3 +15,11 @@ require(profile .. "/workspaces")
 require(profile .. "/device-keybinds")
 
 require("shared/hy3")
+
+local user_cfg = os.getenv("HOME") .. "/.config/hypr/user.lua"
+
+local f = io.open(user_cfg, "r")
+if f then
+	f:close()
+	dofile(user_cfg)
+end
