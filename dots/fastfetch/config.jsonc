@@ -23,7 +23,7 @@
         {
             "type": "custom",
             "key": "os    ",
-            "format": "Groobarchy",
+            "format": "groobarchy",
             "keyColor": "green"
         },
         {

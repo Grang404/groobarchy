@@ -30,7 +30,7 @@ Expects to live at `$HOME/.local/share/groobarchy` and will move itself there if
 
 | Keybind | Action |
 |---|---|
-| `Shift + X` | Searchable list of all keybinds |
+| `Super + X` | Searchable list of all keybinds |
 | `Super + R` | App launcher |
 | `Super + W` | Window picker |
 | `Super + I` | Wallpaper picker |
