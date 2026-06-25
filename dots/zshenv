@@ -1,14 +1,13 @@
 source "$HOME/.config/groobarchy/env"
 
-export HOW_FILE="$HOME/docs/entries"
 export GROOB_DIR="$HOME/.local/share/groobarchy"
 export DOTS="$GROOB_DIR/dots"
 export PATH="$GROOB_DIR/bin:$HOME/.local/bin:$PATH"
 export GROOB_ZSH_DIR="$DOTS/zsh"
 
+export ARCHFLAGS="-arch $(uname -m)"
 export EZA_CONFIG_DIR="$DOTS/eza"
 export EDITOR='nvim'
-export ARCHFLAGS="-arch $(uname -m)"
 export KEYTIMEOUT=1
 
 export XDG_CONFIG_HOME="$HOME/.config"
