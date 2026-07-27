@@ -10,12 +10,12 @@ hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
 hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 } } })
 hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
 
-hl.curve("easy", { type = "spring", mass = 1, stiffness = 238.1191, dampening = 24.21279333 })
+hl.curve("easy", { type = "spring", mass = 1, stiffness = 238.1191, dampening = 31 })
 
 hl.animation({ leaf = "global", enabled = true, speed = 1, bezier = "default" })
 hl.animation({ leaf = "border", enabled = true, speed = 1, bezier = "quick" })
 
-hl.animation({ leaf = "windows", enabled = true, speed = 1, spring = "easy" })
+hl.animation({ leaf = "windows", enabled = true, speed = 1, bezier = "easeOutQuint" })
 hl.animation({ leaf = "windowsIn", enabled = true, speed = 1, bezier = "easeOutQuint", style = "slide" })
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 0.5, bezier = "quick", style = "slide" })
 
