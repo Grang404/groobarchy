@@ -315,6 +315,7 @@ require("lazy").setup({
 				lua = { "stylua" },
 				python = { "ruff_fix", "ruff_format" },
 				sh = { "shfmt" },
+				bash = { "shfmt" },
 				javascript = { "prettier" },
 				htmldjango = { "djlint" },
 				css = { "prettier" },
@@ -479,5 +480,3 @@ require("lazy").setup({
 			task = "📌",
 			lazy = "💤 ",
 		},
-	},
-})
