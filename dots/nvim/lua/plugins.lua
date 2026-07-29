@@ -480,3 +480,5 @@ require("lazy").setup({
 			task = "📌",
 			lazy = "💤 ",
 		},
+	},
+})
