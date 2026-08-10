@@ -22,3 +22,5 @@ rofi
 cmake
 rustup
 qt6ct
+networkmanager
+networkmanager-openvpn
