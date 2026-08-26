@@ -46,7 +46,7 @@ START_CHARGE_THRESH_BAT0="75"
 STOP_CHARGE_THRESH_BAT0="80"
 EOF
 
-if [[ $? -ne 0 ]]; then
+if ! write_tlp_conf > /etc/tlp.conf; then
 	print_error "Failed to write tlp.conf -> /etc/tlp.conf"
 	print_warning "Skipping tlp.conf"
 fi
