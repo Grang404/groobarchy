@@ -317,6 +317,7 @@ require("lazy").setup({
 				sh = { "shfmt" },
 				bash = { "shfmt" },
 				javascript = { "prettier" },
+				html = { "prettier" },
 				htmldjango = { "djlint" },
 				css = { "prettier" },
 				rasi = { "prettier" },
