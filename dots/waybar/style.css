@@ -20,12 +20,14 @@ window#waybar {
   color: @foreground;
 }
 
-.modules-left, .modules-center, .modules-right {
-    background: @background;
-    border-radius: 5px;
-    border: 1px solid #131314;
-    margin: 5px 5px 0px 5px;
-    padding: 0 10px 0px 10px;
+.modules-left,
+.modules-center,
+.modules-right {
+  background: @background;
+  border-radius: 5px;
+  border: 1px solid #131314;
+  margin: 5px 5px 0px 5px;
+  padding: 0 10px 0px 10px;
 }
 
 #workspaces button {
@@ -87,7 +89,6 @@ window#waybar {
   font-size: 14px;
 }
 
-
 #custom-dnd.dnd-on {
   color: @red;
 }
@@ -114,7 +115,8 @@ window#waybar {
 
 #cpu.warning,
 #memory.warning,
-#temperature.warning {
+#temperature.warning,
+#battery.warning:not(.charging) {
   color: @yellow;
 }
 
@@ -135,7 +137,6 @@ window#waybar {
   padding: 0 7px 0 6px;
 }
 
-#battery.warning:not(.charging),
 #battery.critical:not(.charging) {
   animation-name: blink-red;
   animation-duration: 0.5s;
@@ -156,6 +157,10 @@ window#waybar {
 }
 
 @keyframes fade-in {
-    from { opacity: 0.4; }
-    to   { opacity: 1; }
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
