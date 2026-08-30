@@ -5,7 +5,7 @@ export PATH="$GROOB_DIR/bin:$HOME/.local/bin:$PATH"
 export GROOB_DIR="$HOME/.local/share/groobarchy"
 export DOTS="$GROOB_DIR/dots"
 export GROOB_ZSH="$DOTS/zsh"
-export GROOB_HYPR="$DOTS/zsh"
+export GROOB_HYPR="$DOTS/hypr"
 
 export ARCHFLAGS="-arch $(uname -m)"
 export EZA_CONFIG_DIR="$DOTS/eza"

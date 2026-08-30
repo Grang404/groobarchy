@@ -32,3 +32,4 @@ openssh
 noise-suppression-for-voice
 qt6-wayland
 qt5-wayland
+python-pynvim
