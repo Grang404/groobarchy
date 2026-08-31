@@ -2,6 +2,8 @@ precmd() {
     print ""
 }
 
+PROMPT_EOL_MARK=""
+
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=50000
