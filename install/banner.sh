@@ -1,9 +1,10 @@
+#!/usr/bin/env bash
 source "$GROOB_DIR/install/core.sh"
 
 show_banner() {
 	clear
 
-	echo -e "$CYAN"
+	echo -e "$BLUE"
 	printf '%.0s═' {1..80}
 	echo -e "$NC"
 	echo
@@ -35,7 +36,7 @@ EOF
 	echo -e "$NC"
 	echo
 
-	echo -e "$CYAN"
+	echo -e "$BLUE"
 	printf '%.0s═' {1..80}
 	echo -e "$NC"
 	echo
