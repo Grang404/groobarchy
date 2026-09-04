@@ -1,6 +1,7 @@
 local terminal = "alacritty"
 local browser = "firefox"
-local hyprshot_region = "hyprshot -m region --clipboard-only"
+local hyprshot_region = "hyprshot -s -m region --clipboard-only"
+local hyprshot_file = "hyprshot -m region"
 
 hl.bind("SUPER + RETURN", hl.dsp.exec_cmd(terminal)) -- Terminal
 hl.bind("SUPER + CONTROL + RETURN", hl.dsp.exec_cmd("groob-cwd")) -- CWD Terminal
@@ -11,6 +12,7 @@ hl.bind("SUPER + X", hl.dsp.exec_cmd("groob-keybinds")) -- Keybinds
 hl.bind("SUPER + I", hl.dsp.exec_cmd("groob-wallpaper")) -- Wallpaper Picker
 hl.bind("SUPER + ALT + I", hl.dsp.exec_cmd("groob-randompaper")) -- Random Wallpaper
 hl.bind("SUPER + P", hl.dsp.exec_cmd(hyprshot_region)) -- Screenshot Region
+hl.bind("CONTROL + SUPER + P", hl.dsp.exec_cmd(hyprshot_file)) -- Screenshot File
 -- TODO: Add Full screenshot
 hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock")) -- Lock Screen
 hl.bind("CONTROL + ALT + X", hl.dsp.exec_cmd("hyprpicker -a")) -- Color Picker
