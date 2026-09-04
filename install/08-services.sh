@@ -7,17 +7,16 @@ print_msg "Enabling system services..."
 system_services=(
 	"cronie.service"
 	"fstrim.timer"
+	"NetworkManager"
 )
 
 desktop_services=(
-	"NetworkManager"
 	"lm_sensors.service"
 )
 
 laptop_services=(
 	"bluetooth.service"
 	"tlp.service"
-	"iwd.service"
 )
 
 services=("${system_services[@]}")
