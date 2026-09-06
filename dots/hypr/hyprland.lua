@@ -14,8 +14,6 @@ require(profile .. "/monitors")
 require(profile .. "/workspaces")
 require(profile .. "/device-keybinds")
 
-require("shared/hy3")
-
 local user_cfg = os.getenv("HOME") .. "/.config/hypr/user.lua"
 
 local f = io.open(user_cfg, "r")

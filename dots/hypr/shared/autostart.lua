@@ -1,7 +1,6 @@
 local profile = os.getenv("PROFILE")
 local home = os.getenv("HOME")
 hl.on("hyprland.start", function()
-	hl.exec_cmd("hyprpm reload")
 	hl.exec_cmd("waybar -c " .. home .. "/.local/share/groobarchy/dots/waybar/config-" .. profile .. ".jsonc")
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("awww-daemon")
