@@ -119,6 +119,10 @@ mkcd() {
 
 v() { nvim "${1:-.}"; }
 
+mkslug() {
+    echo "$1" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | xargs mkdir
+}
+
 # Initialize zoxide
 eval "$(zoxide init zsh)"
 

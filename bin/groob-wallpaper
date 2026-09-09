@@ -10,11 +10,11 @@ declare -A seen
 
 selected=$(
     {
-        for file in *; do
-            [[ -f "$file" ]] || continue
-            seen["$file"]=1
-            printf '%s\0icon\x1f%s\n' "$file" "$WALLPAPER_DIR/$file"
-        done
+        while IFS= read -r -d '' file; do
+            rel="${file#./}"
+            seen["$rel"]=1
+            printf '%s\0icon\x1f%s\n' "$rel" "$WALLPAPER_DIR/$rel"
+        done < <(find . -type f -print0)
 
         if [[ -n "$CUSTOM_WALLPAPER" && -d "$CUSTOM_WALLPAPER" ]]; then
             while IFS= read -r -d '' file; do

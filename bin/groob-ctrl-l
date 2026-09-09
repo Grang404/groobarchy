@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+exec >>/tmp/groob-ctrl-l.log 2>&1
+echo "=== $(date) ==="
+active_class=$(hyprctl activewindow -j | jq -r '.class')
+echo "active_class=[$active_class]"
+if [[ "$active_class" == "firefox" ]]; then
+	echo "branch: wtype"
+	wtype -M ctrl -k l
+else
+	echo "branch: focus"
+	hyprctl dispatch 'hl.dsp.focus({ direction = "d" })'
+fi
+echo "exit: $?"

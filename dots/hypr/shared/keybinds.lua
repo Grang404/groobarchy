@@ -36,7 +36,7 @@ hl.bind("SUPER + C", hl.dsp.window.close()) -- Close Window
 hl.bind("CONTROL + J", hl.dsp.focus({ direction = "left" })) -- Move Focus Left
 hl.bind("CONTROL + K", hl.dsp.focus({ direction = "right" })) -- Move Focus Right
 hl.bind("CONTROL + H", hl.dsp.focus({ direction = "up" })) -- Move Focus Up
-hl.bind("CONTROL + L", hl.dsp.focus({ direction = "down" })) -- Move Focus Down
+hl.bind("CONTROL + L", hl.dsp.exec_cmd("groob-ctrl-l"))
 
 -- Move Windows
 hl.bind("CONTROL + SHIFT + J", hl.dsp.window.move({ direction = "left" })) -- Move Window Left
