@@ -42,6 +42,10 @@ vim.keymap.set("n", "<leader>td", function()
 	vim.notify("Diagnostics: " .. (vim.g.diagnostics_enabled and "enabled" or "disabled"))
 end, { desc = "[T]oggle [D]iagnostics" })
 
+-- Execute current file
+
+vim.keymap.set("n", "<leader>rr", ":!./%<CR>", { desc = "[R]un [R]file" })
+
 ------------------------------------------------------------------------
 -- TELESCOPE
 ------------------------------------------------------------------------
