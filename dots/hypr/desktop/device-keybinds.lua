@@ -22,4 +22,14 @@ end
 
 hl.bind("SUPER + K", hl.dsp.focus({ workspace = "name:uwu" }))
 hl.bind("CONTROL + SUPER + K", hl.dsp.window.move({ workspace = "name:uwu" }))
+
+for i = 1, 5 do
+	hl.workspace_rule({ workspace = tostring(i), monitor = "DP-1" })
+	hl.workspace_rule({ workspace = tostring(i + 5), monitor = "DP-2" })
+end
+
+for i = 11, 14 do
+	hl.workspace_rule({ workspace = tostring(i), monitor = "DP-1" })
+	hl.workspace_rule({ workspace = tostring(i + 5), monitor = "DP-2" })
+end
 -- KEYBINDS_SKIP_END
