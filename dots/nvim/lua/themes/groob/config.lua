@@ -31,7 +31,6 @@ M.config = {
 	boolean_style = style(opt("italic_booleans", false), opt("bold_booleans", false)),
 	function_style = style(opt("italic_functions", false), opt("bold_functions", true)),
 	variable_style = style(opt("italic_variables", false), opt("bold_variables", false)),
-	variant = opt("variant", "dark"),
 	highlight_overrides = opt("highlight_overrides", {}),
 }
 
