@@ -281,21 +281,6 @@ local set_groups = function()
 		["diffLine"] = { fg = c.cyan },
 		["diffIndexLine"] = { fg = c.magenta },
 
-		-- Hop
-		["HopNextKey"] = { fg = c.bright_yellow },
-		["HopNextKey1"] = { fg = c.bright_blue },
-		["HopNextKey2"] = { fg = c.bright_cyan },
-		["HopUnmatched"] = { fg = c.gray04 },
-		["HopCursor"] = { fg = c.bright_cyan },
-		["HopPreview"] = { fg = c.bright_blue },
-
-		-- Leap
-		["LeapLabel"] = { fg = c.bright_yellow, bold = true },
-		["LeapBackdrop"] = { fg = c.gray05 },
-
-		-- Blink
-		["BlinkCmpLabelMatch"] = { fg = c.cyan, bold = true },
-
 		-- Cmp
 		["CmpItemAbbrDeprecated"] = { fg = c.gray06, strikethrough = true },
 		["CmpItemAbbrMatch"] = { fg = c.cyan, bold = true },
@@ -307,65 +292,6 @@ local set_groups = function()
 		["CmpItemKindEnum"] = { fg = c.green },
 		["CmpItemKindSnippet"] = { fg = c.yellow },
 
-		-- Navic
-		["NavicIconsFile"] = { fg = c.fg, bg = c.none },
-		["NavicIconsModule"] = { fg = c.yellow, bg = c.none },
-		["NavicIconsNamespace"] = { fg = c.fg, bg = c.none },
-		["NavicIconsPackage"] = { fg = c.fg, bg = c.none },
-		["NavicIconsClass"] = { fg = c.cyan, bg = c.none },
-		["NavicIconsMethod"] = { fg = c.blue, bg = c.none },
-		["NavicIconsProperty"] = { fg = c.green, bg = c.none },
-		["NavicIconsField"] = { fg = c.green, bg = c.none },
-		["NavicIconsConstructor"] = { fg = c.cyan, bg = c.none },
-		["NavicIconsEnum"] = { fg = c.cyan, bg = c.none },
-		["NavicIconsInterface"] = { fg = c.cyan, bg = c.none },
-		["NavicIconsFunction"] = { fg = c.blue, bg = c.none },
-		["NavicIconsVariable"] = { fg = c.magenta, bg = c.none },
-		["NavicIconsConstant"] = { fg = c.magenta, bg = c.none },
-		["NavicIconsString"] = { fg = c.green, bg = c.none },
-		["NavicIconsNumber"] = { fg = c.cyan, bg = c.none },
-		["NavicIconsBoolean"] = { fg = c.yellow, bg = c.none },
-		["NavicIconsArray"] = { fg = c.gray06, bg = c.none },
-		["NavicIconsObject"] = { fg = c.gray06, bg = c.none },
-		["NavicIconsKey"] = { fg = c.blue, bg = c.none },
-		["NavicIconsKeyword"] = { fg = c.blue, bg = c.none },
-		["NavicIconsNull"] = { fg = c.cyan, bg = c.none },
-		["NavicIconsEnumMember"] = { fg = c.green, bg = c.none },
-		["NavicIconsStruct"] = { fg = c.cyan, bg = c.none },
-		["NavicIconsEvent"] = { fg = c.cyan, bg = c.none },
-		["NavicIconsOperator"] = { fg = c.fg, bg = c.none },
-		["NavicIconsTypeParameter"] = { fg = c.green, bg = c.none },
-		["NavicText"] = { fg = c.white, bg = c.none },
-		["NavicSeparator"] = { fg = c.gray06, bg = c.none },
-
-		-- Notify
-		["NotifyBackground"] = { fg = c.white, bg = c.bg },
-		["NotifyERRORBorder"] = { fg = c.red, bg = c.bg },
-		["NotifyWARNBorder"] = { fg = c.yellow, bg = c.bg },
-		["NotifyINFOBorder"] = { fg = c.blue, bg = c.bg },
-		["NotifyDEBUGBorder"] = { fg = c.gray06, bg = c.bg },
-		["NotifyTRACEBorder"] = { fg = c.cyan, bg = c.bg },
-		["NotifyERRORIcon"] = { fg = c.bright_red },
-		["NotifyWARNIcon"] = { fg = c.bright_yellow },
-		["NotifyINFOIcon"] = { fg = c.bright_blue },
-		["NotifyDEBUGIcon"] = { fg = c.gray05 },
-		["NotifyTRACEIcon"] = { fg = c.bright_cyan },
-		["NotifyERRORTitle"] = { fg = c.bright_red },
-		["NotifyWARNTitle"] = { fg = c.bright_yellow },
-		["NotifyINFOTitle"] = { fg = c.bright_blue },
-		["NotifyDEBUGTitle"] = { fg = c.gray05 },
-		["NotifyTRACETitle"] = { fg = c.bright_cyan },
-		["NotifyERRORBody"] = { fg = c.white, bg = c.bg },
-		["NotifyWARNBody"] = { fg = c.white, bg = c.bg },
-		["NotifyINFOBody"] = { fg = c.white, bg = c.bg },
-		["NotifyDEBUGBody"] = { fg = c.white, bg = c.bg },
-		["NotifyTRACEBody"] = { fg = c.white, bg = c.bg },
-
-		-- NeoTree
-		["NeoTreeFloatBorder"] = { fg = c.gray03, bg = c.bg },
-		["NeoTreeFloatTitle"] = { fg = c.gray05, bg = c.gray07 },
-		["NeoTreeTitleBar"] = { fg = c.gray05, bg = c.gray01 },
-
 		-- Telescope
 		["TelescopeBorder"] = { fg = c.bg, bg = c.bg },
 		["TelescopeNormal"] = { fg = c.fg, bg = c.bg },
@@ -376,55 +302,6 @@ local set_groups = function()
 		["TelescopePromptNormal"] = { fg = c.gray06, bg = c.gray01 },
 		["TelescopePromptCounter"] = { fg = c.gray04, bg = c.gray01 },
 		["TelescopeMatching"] = { fg = c.yellow, underline = true },
-
-		-- Dap UI
-		["DapUINormal"] = { link = "Normal" },
-		["DapUIVariable"] = { link = "Normal" },
-		["DapUIScope"] = { fg = c.blue },
-		["DapUIType"] = { fg = c.magenta },
-		["DapUIValue"] = { link = "Normal" },
-		["DapUIModifiedValue"] = { fg = c.blue, bold = true },
-		["DapUIDecoration"] = { fg = c.blue },
-		["DapUIThread"] = { fg = c.bright_green },
-		["DapUIStoppedThread"] = { fg = c.blue },
-		["DapUIFrameName"] = { link = "Normal" },
-		["DapUISource"] = { fg = c.magenta },
-		["DapUILineNumber"] = { fg = c.blue },
-		["DapUIFloatNormal"] = { link = "NormalFloat" },
-		["DapUIFloatBorder"] = { fg = c.blue },
-		["DapUIWatchesEmpty"] = { fg = c.bright_cyan },
-		["DapUIWatchesValue"] = { fg = c.bright_green },
-		["DapUIWatchesError"] = { fg = c.bright_cyan },
-		["DapUIBreakpointsPath"] = { fg = c.blue },
-		["DapUIBreakpointsInfo"] = { fg = c.bright_green },
-		["DapUIBreakpointsCurrentLine"] = { fg = c.bright_green, bold = true },
-		["DapUIBreakpointsLine"] = { link = "DapUILineNumber" },
-		["DapUIBreakpointsDisabledLine"] = { fg = c.gray03 },
-		["DapUICurrentFrameName"] = { link = "DapUIBreakpointsCurrentLine" },
-		["DapUIStepOver"] = { fg = c.blue },
-		["DapUIStepInto"] = { fg = c.blue },
-		["DapUIStepBack"] = { fg = c.blue },
-		["DapUIStepOut"] = { fg = c.blue },
-		["DapUIStop"] = { fg = c.bright_cyan },
-		["DapUIPlayPause"] = { fg = c.bright_green },
-		["DapUIRestart"] = { fg = c.bright_green },
-		["DapUIUnavailable"] = { fg = c.gray03 },
-		["DapUIWinSelect"] = { fg = c.cyan, bold = true },
-		["DapUIEndofBuffer"] = { link = "EndofBuffer" },
-
-		-- Flash
-		["FlashBackdrop"] = { link = "Comment" },
-		["FlashCurrent"] = { link = "IncSearch" },
-		["FlashCursor"] = { bg = c.bright_blue, fg = c.bg_dark, bold = true },
-		["FlashLabel"] = { bg = c.cyan, bold = true, fg = c.bg_dark },
-		["FlashMatch"] = { link = "Search" },
-		["FlashPrompt"] = { link = "MsgArea" },
-		["FlashPromptIcon"] = { link = "Special" },
-
-		-- Illuminate
-		["IlluminatedWordText"] = { bg = c.gray03 },
-		["IlluminatedWordRead"] = { bg = c.gray03 },
-		["IlluminatedWordWrite"] = { bg = c.gray03 },
 
 		-- Mini
 		["MiniClueNextKeyWithPostkeys"] = { fg = c.cyan },
@@ -469,18 +346,6 @@ local set_groups = function()
 		["NormalFloat"] = { fg = c.fg, bg = c.none },
 		["FloatBorder"] = { fg = c.white, bg = c.none },
 
-		-- Notify
-		["NotifyERRORBorder"] = { fg = c.red, bg = c.none },
-		["NotifyWARNBorder"] = { fg = c.yellow, bg = c.none },
-		["NotifyINFOBorder"] = { fg = c.blue, bg = c.none },
-		["NotifyDEBUGBorder"] = { fg = c.gray06, bg = c.none },
-		["NotifyTRACEBorder"] = { fg = c.cyan, bg = c.none },
-		["NotifyERRORBody"] = { fg = c.white, bg = c.none },
-		["NotifyWARNBody"] = { fg = c.white, bg = c.none },
-		["NotifyINFOBody"] = { fg = c.white, bg = c.none },
-		["NotifyDEBUGBody"] = { fg = c.white, bg = c.none },
-		["NotifyTRACEBody"] = { fg = c.white, bg = c.none },
-
 		-- Telescope
 		["TelescopeBorder"] = { fg = c.white, bg = c.none },
 		["TelescopeNormal"] = { fg = c.fg, bg = c.none },
@@ -491,16 +356,6 @@ local set_groups = function()
 		["TelescopePromptNormal"] = { fg = c.gray06, bg = c.none },
 		["TelescopePromptCounter"] = { fg = c.white, bg = c.none },
 		["TelescopeMatching"] = { fg = c.yellow, underline = true },
-
-		-- NeoGit
-		["NeogitChangeAdded"] = { link = "diffAdded" },
-		["NeogitChangeDeleted"] = { link = "diffRemoved" },
-		["NeogitChangeModified"] = { link = "diffChanged" },
-		["NeogitChangeNewFile"] = { link = "diffNewFile" },
-		["NeogitDiffAdd"] = { link = "DiffAdd" },
-		["NeogitDiffDelete"] = { link = "DiffDelete" },
-		["NeogitDiffAddHighlight"] = { link = "NeogitDiffAdd" },
-		["NeogitDiffDeleteHighlight"] = { link = "NeogitDiffDelete" },
 
 		YankHighlight = { bg = c.magenta, fg = c.bg },
 	}
