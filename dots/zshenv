@@ -1,7 +1,7 @@
 source "$HOME/.config/groobarchy/env"
 
 typeset -U path
-path="$GROOB_DIR/bin:$HOME/.local/bin:$PATH"
+path=("$GROOB_DIR/bin" "$HOME/.local/bin" $path)
 export PATH
 
 export GROOB_DIR="$HOME/.local/share/groobarchy"
