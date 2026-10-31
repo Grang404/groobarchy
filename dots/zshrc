@@ -44,9 +44,6 @@ setopt PROMPTSUBST          # enable command substitution in prompt
 autoload -Uz compinit
 compinit
 
-# Update completion colors after LS_COLORS is set
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 bindkey -v

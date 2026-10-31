@@ -1,6 +1,8 @@
 source "$HOME/.config/groobarchy/env"
 
-export PATH="$GROOB_DIR/bin:$HOME/.local/bin:$PATH"
+typeset -U path
+path="$GROOB_DIR/bin:$HOME/.local/bin:$PATH"
+export PATH
 
 export GROOB_DIR="$HOME/.local/share/groobarchy"
 export DOTS="$GROOB_DIR/dots"
