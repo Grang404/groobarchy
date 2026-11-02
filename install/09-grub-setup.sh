@@ -28,15 +28,22 @@ config_grub() {
 	fi
 
 	# TODO: Implement Nvidia params
-	if [[ -n "$pstate_param" ]]; then
-		if grep -q "^GRUB_CMDLINE_LINUX=" /etc/default/grub; then
-			sed -i "s/^GRUB_CMDLINE_LINUX=\"\(.*\)\"/GRUB_CMDLINE_LINUX=\"\1 ${pstate_param}\"/" /etc/default/grub
-		else
-			echo "GRUB_CMDLINE_LINUX=\"${pstate_param}\"" >>/etc/default/grub
-		fi
+	[[ -z "$pstate_param" ]] && return 0
+	[[ -f /etc/default/grub ]] || {
+		print_warning "no grub???????? implement pstate_param yourself then ;("
+		return 0
+	}
+
+	if grep -q "^GRUB_CMDLINE_LINUX=" /etc/default/grub; then
+		sed -i "s/^GRUB_CMDLINE_LINUX=\"\(.*\)\"/GRUB_CMDLINE_LINUX=\"\1 ${pstate_param}\"/" /etc/default/grub
+	else
+		echo "GRUB_CMDLINE_LINUX=\"${pstate_param}\"" >>/etc/default/grub
 	fi
 
-	grub-mkconfig -o /boot/grub/grub.cfg
+	grub-mkconfig -o /boot/grub/grub.cfg || {
+		print_error "grub-mkconfig failed, abort, abort"
+		exit 1
+	}
 	print_success "GRUB configured successfully"
 }
 

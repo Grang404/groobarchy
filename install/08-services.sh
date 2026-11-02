@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 source "$GROOB_DIR/install/core.sh"
-[[ -z "$PROFILE" ]] && die "PROFILE is not set"
+
+[[ -z "$PROFILE" ]] && {
+	print_error "PROFILE is not set"
+	exit 1
+}
 
 print_msg "Enabling system services..."
 

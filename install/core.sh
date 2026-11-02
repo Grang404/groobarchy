@@ -9,18 +9,13 @@ NC='\033[0m'
 
 print_msg() { echo -e "${BOLD}${BLUE}[*]${NC} $1"; }
 print_success() { echo -e "${BOLD}${GREEN}[+]${NC} $1"; }
-print_error() { echo -e "${BOLD}${RED}[!]${NC} $1"; }
-print_warning() { echo -e "${BOLD}${YELLOW}[!]${NC} $1"; }
+print_error() { echo -e "${BOLD}${RED}[!]${NC} $1" >&2; }
+print_warning() { echo -e "${BOLD}${YELLOW}[!]${NC} $1" >&2; }
 
 if [[ -n "$SUDO_USER" ]]; then
 	USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
 	export USER_HOME
 fi
-
-die() {
-	print_error "$1"
-	exit "${2:-1}"
-}
 
 link() {
 	local src="$1" tgt="$2"

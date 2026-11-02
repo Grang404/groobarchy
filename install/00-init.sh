@@ -4,7 +4,8 @@ source "$GROOB_DIR/install/core.sh"
 
 print_msg "Updating system..."
 sudo pacman -Syu --noconfirm || {
-	die "System update failed"
+	print_error "System update failed"
+	exit 1
 }
 
 print_success "System updated"
@@ -16,11 +17,14 @@ else
 
 	multilib_pattern='\|^#\[multilib\]|,\|^#Include = /etc/pacman.d/mirrorlist| s/^#//'
 	sudo sed -i "$multilib_pattern" /etc/pacman.conf || {
-		die "Failed to write to /etc/pacman.conf"
+		print_error "Failed to write to /etc/pacman.conf"
+		exit 1
 	}
 
 	sudo pacman -Sy --noconfirm || {
-		die "Failed to enable multilib"
+		print_error "Failed to enable multilib"
+		exit 1
 	}
+
 	print_success "Multilib enabled"
 fi

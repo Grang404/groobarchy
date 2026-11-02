@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 source "$GROOB_DIR/install/core.sh"
-[[ -z "$USER_HOME" ]] && die "could not resolve USER_HOME"
+[[ -z "$USER_HOME" ]] && {
+	print_error "could not resolve USER_HOME"
+	exit 1
+}
 
 print_msg "Configuring Firefox..."
 
@@ -11,10 +14,17 @@ if [[ -z "$firefox_profile" ]]; then
 	sudo -u "$SUDO_USER" timeout 5 firefox --headless >/dev/null 2>&1 || true
 	firefox_profile=$(find "$USER_HOME/.config/mozilla/firefox" -maxdepth 1 -type d -name "*.default-release" 2>/dev/null | head -n1)
 	sleep 2
-	[[ -z "$firefox_profile" ]] && die "Failed to create Firefox profile"
+	[[ -z "$firefox_profile" ]] && {
+		print_error "Failed to create Firefox profile"
+		exit 1
+	}
 fi
 
-link "$GROOB_DIR/dots/firefox/user.js" "$firefox_profile/user.js" || die "Failed to link user.js"
+link "$GROOB_DIR/dots/firefox/user.js" "$firefox_profile/user.js" || {
+	print_error "Failed to link user.js"
+	exit 1
+}
+
 chown "$SUDO_USER:$SUDO_USER" "$firefox_profile/user.js"
 
 print_success "Firefox configured"

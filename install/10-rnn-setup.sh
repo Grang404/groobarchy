@@ -7,7 +7,10 @@ CONF_FILE="$CONF_DIR/99-input-denoising.conf"
 
 PLUGIN="/usr/lib/ladspa/librnnoise_ladspa.so"
 
-[[ -f "$PLUGIN" ]] || die "librnnoise_ladspa.so not found at $PLUGIN — is noise-suppression-for-voice installed?"
+[[ -f "$PLUGIN" ]] || {
+	print_error "librnnoise_ladspa.so not found at $PLUGIN, is noise-suppression-for-voice installed? 👁️"
+	exit 1
+}
 
 print_msg "Setting up PipeWire RNNoise filter..."
 
@@ -54,16 +57,23 @@ chown "$SUDO_USER":"$SUDO_USER" "$CONF_FILE"
 print_success "Config written to $CONF_FILE"
 
 print_msg "Restarting PipeWire as $SUDO_USER..."
-sudo -u "$SUDO_USER" \
+
+if sudo -u "$SUDO_USER" \
 	DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" \
 	XDG_RUNTIME_DIR="/run/user/$(id -u "$SUDO_USER")" \
-	systemctl --user restart pipewire pipewire-pulse || die "Failed to restart PipeWire"
-
-print_success "PipeWire restarted"
+	systemctl --user restart pipewire pipewire-pulse; then
+	print_success "PipeWire restarted"
+else
+	print_warning "Failed to restart PipeWire, do it yourself 🤷"
+fi
 
 print_msg "Verifying virtual source..."
 sleep 2
-sudo -u "$SUDO_USER" \
+if sudo -u "$SUDO_USER" \
 	DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" \
 	XDG_RUNTIME_DIR="/run/user/$(id -u "$SUDO_USER")" \
-	pactl list sources short | grep -i noise || print_warning "Virtual source not detected — check: journalctl --user -u pipewire -n 50"
+	pactl list sources short | grep -i noise; then
+	print_success "Virtual source do be there though"
+else
+	print_warning "Virtual source not detected, check: journalctl --user -u pipewire -n 50"
+fi

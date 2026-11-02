@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 source "$GROOB_DIR/install/core.sh"
 
-[[ -z "$USER_HOME" ]] && die "could not resolve USER_HOME"
+[[ -z "$USER_HOME" ]] && {
+	print_error "could not resolve USER_HOME"
+	exit 1
+}
 
 print_msg "Configuring XDG directories and MIME associations..."
 
@@ -15,7 +18,13 @@ chown -R "$SUDO_USER:$SUDO_USER" "$USER_HOME/.cache" "$USER_HOME/.config" "$USER
 	mkdir /etc/xdg
 }
 
-cp "$GROOB_DIR/dots/xdg/user-dirs.conf" "$GROOB_DIR/dots/xdg/user-dirs.defaults" /etc/xdg/ || die "Failed to copy xdg configs"
-sudo -u "$SUDO_USER" xdg-user-dirs-update || die "xdg-user-dirs-update failed"
+cp "$GROOB_DIR/dots/xdg/user-dirs.conf" "$GROOB_DIR/dots/xdg/user-dirs.defaults" /etc/xdg/ || {
+	print_error "Failed to copy xdg configs"
+	exit 1
+}
+sudo -u "$SUDO_USER" xdg-user-dirs-update || {
+	print_error "xdg-user-dirs-update failed"
+	exit 1
+}
 
 print_success "XDG configured"

@@ -26,7 +26,10 @@ install_group() {
 
 	print_msg "Installing $group packages..."
 
-	sudo pacman -S --needed --noconfirm "${pkgs[@]}" || die "Failed to install $group!"
+	sudo pacman -S --needed --noconfirm "${pkgs[@]}" || {
+		print_error "Failed to install $group!"
+		exit 1
+	}
 
 	print_success "All $group packages have been installed..."
 }
@@ -50,6 +53,10 @@ if [[ -f "$user_pkgs" ]]; then
 		print_warning "user.pkgs has no packages, skipping"
 		return
 	}
-	sudo pacman -S --needed --noconfirm "${pkgs[@]}" || die "Failed to install $user_pkgs"
+	sudo pacman -S --needed --noconfirm "${pkgs[@]}" || {
+		print_error "Failed to install $user_pkgs"
+		exit 1
+	}
+
 	print_success "User packages done"
 fi

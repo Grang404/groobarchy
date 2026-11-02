@@ -3,11 +3,17 @@
 source "$GROOB_DIR/install/core.sh"
 source "$GROOB_DIR/install/detect.sh"
 
-[[ -z "$USER_HOME" ]] && die "could not resolve USER_HOME"
+[[ -z "$USER_HOME" ]] && {
+	print_error "could not resolve USER_HOME"
+	exit 1
+}
 
 CONFIG="$USER_HOME/.config"
 
-[[ -d "$DOTS" ]] || die "Dotfiles directory not found: $DOTS"
+[[ -d "$DOTS" ]] || {
+	print_error "Dotfiles directory not found: $DOTS"
+	exit 1
+}
 
 # config dirs
 shopt -s nullglob

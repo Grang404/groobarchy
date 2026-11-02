@@ -18,13 +18,19 @@ clone_if_missing() {
 		return
 	fi
 
-	git clone --depth=1 "$url" "$dest" || print_warning "Failed to clone: $url"
-	print_success "$name installed"
+	if git clone --depth=1 "$url" "$dest"; then
+		print_success "$name installed"
+	else
+		print_warning "Failed to clone: $url"
+	fi
 }
 
 clone_if_missing https://github.com/zsh-users/zsh-autosuggestions "$PLUGINS_DIR/zsh-autosuggestions"
 clone_if_missing https://github.com/zsh-users/zsh-syntax-highlighting "$PLUGINS_DIR/zsh-syntax-highlighting"
 clone_if_missing https://github.com/romkatv/powerlevel10k "$THEMES_DIR/powerlevel10k"
 
-chsh -s /usr/bin/zsh "$SUDO_USER"
-print_success "zsh configured"
+if chsh -s /usr/bin/zsh "$SUDO_USER"; then
+	print_success "zsh configured"
+else
+	print_warning "Changing shell to zsh for $SUDO_USER failed! Do it manually"
+fi

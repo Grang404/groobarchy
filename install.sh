@@ -34,7 +34,8 @@ source "$GROOB_DIR/install/core.sh" || {
 }
 
 source "$GROOB_DIR/install/detect.sh" || {
-	die "Failed to source detect.sh"
+	print_error "Failed to source detect.sh"
+	exit 1
 }
 
 PROFILE=${PROFILE:-$(detect_platform)}
@@ -65,12 +66,17 @@ ensure_git() {
 	groob_repo="https://github.com/Grang404/groobarchy.git"
 	[[ -d "$GROOB_DIR/.git" ]] && return
 	print_warning "No git repository detected"
-	command -v git &>/dev/null || die "git is required"
+	command -v git &>/dev/null || {
+		print_error "git is required"
+		exit 1
+	}
+
 	local tmp
 	tmp="$(mktemp -d)"
 	git clone "$groob_repo" "$tmp" || {
 		rm -rf "$tmp"
-		die "Failed to clone $groob_repo into $tmp. Removing $tmp."
+		print_error "Failed to clone $groob_repo into $tmp. Removing $tmp."
+		exit 1
 	}
 	mv "$tmp/.git" "$GROOB_DIR/.git"
 	rm -rf "$tmp"
@@ -85,7 +91,10 @@ install_cli() {
 
 	for script in "$GROOB_DIR/bin/"*; do
 		[[ -f "$script" ]] || continue
-		ln -sfn "$script" "$bin_dir/$(basename "$script")" || { print_warning "failed to link $(basename "$script")"; continue; }
+		ln -sfn "$script" "$bin_dir/$(basename "$script")" || {
+			print_warning "failed to link $(basename "$script")"
+			continue
+		}
 		print_msg "Linked $(basename "$script")"
 	done
 
@@ -107,7 +116,10 @@ main() {
 
 	shopt -s nullglob
 	scripts=("$GROOB_DIR"/install/[0-9]*)
-	[[ ${#scripts[@]} -eq 0 ]] && die "No install scripts found!"
+	[[ ${#scripts[@]} -eq 0 ]] && {
+		print_error "No install scripts found!"
+		exit 1
+	}
 
 	ran=0
 	for script in "${scripts[@]}"; do
@@ -120,12 +132,19 @@ main() {
 		fi
 
 		print_msg "Running $name..."
-		bash "$script" || die "$name failed"
+		bash "$script" || {
+			print_error "$name failed"
+			exit 1
+		}
+
 		print_success "$name done"
 		((ran++))
 	done
 
-	[[ $ran -eq 0 ]] && die "Install failed: no scripts were executed (none executable?)"
+	[[ $ran -eq 0 ]] && {
+		print_error "Install failed: no scripts were executed (none executable?)"
+		exit 1
+	}
 
 	shopt -u nullglob
 
