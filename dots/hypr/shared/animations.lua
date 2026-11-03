@@ -16,7 +16,7 @@ hl.animation({ leaf = "global", enabled = true, speed = 1, bezier = "default" })
 hl.animation({ leaf = "border", enabled = true, speed = 1, bezier = "quick" })
 
 hl.animation({ leaf = "windows", enabled = true, speed = 1, bezier = "easeOutQuint" })
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 1, bezier = "easeOutQuint", style = "slide" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 1.5, bezier = "easeOutQuint", style = "popin" })
 hl.animation({ leaf = "windowsOut", enabled = true, speed = 0.5, bezier = "quick", style = "slide" })
 
 hl.animation({ leaf = "workspaces", enabled = false, speed = 0.8, bezier = "quick", style = "slide" })
