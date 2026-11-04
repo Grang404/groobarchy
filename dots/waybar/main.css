@@ -1,0 +1,165 @@
+@define-color background #0a0a0a;
+@define-color background-alt #131314;
+@define-color foreground #c9c7cd;
+@define-color foreground-dim #4f4f57;
+@define-color red #d44657;
+@define-color yellow #f0c5a9;
+@define-color green #9dc6ac;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 12px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: transparent;
+  color: @foreground;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background: @background;
+  border-radius: 5px;
+  margin: 5px 5px 0px 5px;
+  padding: 0 10px 0px 10px;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  border-top: 1px solid transparent;
+  background-color: transparent;
+  color: @foreground;
+  margin: 0;
+}
+
+#workspaces button:hover {
+  background: @background-alt;
+  color: @foreground;
+}
+
+#workspaces button.empty {
+  background-color: transparent;
+  color: @foreground-dim;
+}
+
+#workspaces button.active {
+  background-color: transparent;
+  color: @foreground;
+  animation: fade-in 0.1s;
+}
+
+#workspaces button.urgent {
+  color: @foreground;
+  animation-name: blink-red;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-separator {
+  color: alpha(@foreground-dim, 0.3);
+}
+
+#clock,
+#network,
+#pulseaudio,
+#battery,
+#temperature,
+#cpu,
+#memory,
+#custom-dnd,
+#custom-vpn,
+#custom-capslock {
+  color: @foreground;
+  padding: 0 5px 0 5px;
+  margin: 0;
+  background-color: transparent;
+}
+
+#custom-dnd {
+  margin-right: 5px;
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+#custom-dnd.dnd-on {
+  color: @red;
+}
+
+#custom-vpn {
+  margin-right: 5px;
+}
+
+#pulseaudio {
+  font-size: 16px;
+}
+
+#pulseaudio.muted {
+  color: @red;
+}
+
+#network {
+  font-size: 14px;
+}
+
+#network.disconnected {
+  color: @red;
+}
+
+#cpu.warning,
+#memory.warning,
+#temperature.warning,
+#battery.warning:not(.charging) {
+  color: @yellow;
+}
+
+#cpu.critical,
+#memory.critical,
+#temperature.critical {
+  color: @red;
+  animation-name: blink-red;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-capslock.active {
+  color: @yellow;
+  font-size: 20px;
+  padding: 0 7px 0 6px;
+}
+
+#battery.critical:not(.charging) {
+  animation-name: blink-red;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink-red {
+  from {
+    background-color: transparent;
+    color: @red;
+  }
+  to {
+    background-color: @red;
+    color: @background;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}

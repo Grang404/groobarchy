@@ -16,22 +16,22 @@
 }
 
 window#waybar {
-  background-color: transparent;
+  background-color: @background;
   color: @foreground;
 }
 
 .modules-left,
-.modules-center,
+/* .modules-center, */
 .modules-right {
   background: @background;
   border-radius: 5px;
-  margin: 5px 5px 0px 5px;
+  margin: 0px 5px 0px 5px;
   padding: 0 10px 0px 10px;
 }
 
 #workspaces button {
   padding: 0 5px;
-  border-top: 1px solid transparent;
+  /* border-top: 1px solid transparent; */
   background-color: transparent;
   color: @foreground;
   margin: 0;

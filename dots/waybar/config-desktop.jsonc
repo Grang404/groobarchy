@@ -8,13 +8,12 @@
 
     "modules-left": ["hyprland/workspaces"],
 
-    "modules-center": ["clock"],
+    // "modules-center": ["clock"],
 
-    "modules-right": ["custom/capslock","custom/dnd", "custom/separator", "custom/vpn", "custom/separator", "memory", "custom/separator", "cpu", "custom/separator", "temperature","custom/separator", "pulseaudio","custom/separator", "network"],
+    "modules-right": ["custom/capslock","custom/dnd", "custom/separator", "custom/vpn", "custom/separator", "memory", "custom/separator", "cpu", "custom/separator", "temperature","custom/separator", "pulseaudio","custom/separator", "network", "custom/separator", "clock"],
 
 
     "hyprland/workspaces": {
-        // TODO: Uncook this on click
         "on-click": "activate",
         "disable-scroll": true,
         "all-outputs": false,
