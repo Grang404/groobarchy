@@ -106,6 +106,7 @@ window#waybar {
 
 #network {
   font-size: 14px;
+  padding-right: 0px;
 }
 
 #network.disconnected {
