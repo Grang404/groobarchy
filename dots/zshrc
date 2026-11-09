@@ -104,10 +104,12 @@ alias hg='history 1 | grep'
 alias sdn='shutdown now'
 alias rcp='rsync -ah --progress'
 alias gbp='~/dev/scripts/backup/backup.sh'
+alias del='trash-put'
 
 alias ls='eza'
-alias ll='eza -lF'
+alias ll='eza -lgF'
 alias la='eza -A'
+alias l="eza -1"
 
 mkcd() {
   mkdir -p "$1" && cd "$1"
