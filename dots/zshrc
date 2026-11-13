@@ -1,5 +1,10 @@
 precmd() {
-    print ""
+
+    if [ -z "$NEWLINE_BEFORE_PROMPT" ]; then
+        NEWLINE_BEFORE_PROMPT=1
+    else
+        print ""
+    fi
 }
 
 PROMPT_EOL_MARK=""
@@ -16,6 +21,13 @@ setopt HIST_IGNORE_SPACE         # ignore commands that start with space
 setopt HIST_VERIFY               # show command with history expansion to user before running it
 setopt INC_APPEND_HISTORY        # add commands to HISTFILE in order of execution
 setopt SHARE_HISTORY             # share command history data
+setopt AUTO_CD              # cd by typing directory name if it's not a command
+setopt CORRECT              # auto correct mistakes
+setopt INTERACTIVECOMMENTS  # allow comments in interactive mode
+setopt MAGICEQUALSUBST      # enable filename expansion for arguments of the form 'anything=expression'
+setopt NONOMATCH            # hide error message if there is no match for the pattern
+setopt NUMERICGLOBSORT      # sort filenames numerically when it makes sense
+setopt PROMPTSUBST          # enable command substitution in prompt
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -31,14 +43,6 @@ source "$GROOB_ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # Load custom syntax highlighting styles (MUST come after zsh-syntax-highlighting)
 source "$GROOB_ZSH/highlight_styles.zsh"
 
-# Basic zsh options
-setopt AUTO_CD              # cd by typing directory name if it's not a command
-setopt CORRECT              # auto correct mistakes
-setopt INTERACTIVECOMMENTS  # allow comments in interactive mode
-setopt MAGICEQUALSUBST      # enable filename expansion for arguments of the form 'anything=expression'
-setopt NONOMATCH            # hide error message if there is no match for the pattern
-setopt NUMERICGLOBSORT      # sort filenames numerically when it makes sense
-setopt PROMPTSUBST          # enable command substitution in prompt
 
 # Enable and configure completions
 autoload -Uz compinit
