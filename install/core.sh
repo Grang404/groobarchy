@@ -17,6 +17,10 @@ if [[ -n "$SUDO_USER" ]]; then
 	export USER_HOME
 fi
 
+as_user() {
+    sudo -u "$SUDO_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u "$SUDO_USER")/bus" "$@"
+}
+
 link() {
 	local src="$1" tgt="$2"
 	[[ -e "$src" ]] || {
