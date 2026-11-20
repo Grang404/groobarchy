@@ -8,10 +8,15 @@
 
     "modules-left": ["hyprland/workspaces"],
 
-    // "modules-center": ["clock"],
+    "modules-center": ["hyprland/window"],
 
     "modules-right": ["custom/capslock","custom/dnd", "custom/separator", "custom/vpn", "custom/separator", "memory", "custom/separator", "cpu", "custom/separator", "temperature","custom/separator", "pulseaudio","custom/separator", "network", "custom/separator", "clock"],
 
+
+    "hyprland/window": {
+        "format": "{title}",
+        "separate-outputs": true
+    },
 
     "hyprland/workspaces": {
         "on-click": "activate",

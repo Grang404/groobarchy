@@ -21,7 +21,7 @@ window#waybar {
 }
 
 .modules-left,
-/* .modules-center, */
+.modules-center,
 .modules-right {
   background: @background;
   border-radius: 5px;
@@ -66,6 +66,7 @@ window#waybar {
   color: alpha(@foreground-dim, 0.3);
 }
 
+#window,
 #clock,
 #network,
 #pulseaudio,

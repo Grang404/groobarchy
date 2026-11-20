@@ -1,5 +1,7 @@
-precmd() {
+preexec() { printf '\e]0;%s\a' "$1" }
 
+precmd() {
+    print -Pn "\e]0;%n@%m: %~\a"
     if [ -z "$NEWLINE_BEFORE_PROMPT" ]; then
         NEWLINE_BEFORE_PROMPT=1
     else
