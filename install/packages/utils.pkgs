@@ -45,3 +45,5 @@ nmaps
 tcpdump
 pacman-contrib
 xorg-xhost
+usbmuxd
+libimobiledevice
