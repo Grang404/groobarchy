@@ -8,9 +8,9 @@
 
     "modules-left": ["hyprland/workspaces"],
 
-    "modules-center": ["clock"],
+    // "modules-center": ["clock"],
 
-    "modules-right": ["custom/capslock","custom/dnd", "custom/separator", "battery", "custom/separator", "memory", "custom/separator", "cpu", "custom/separator", "pulseaudio","custom/separator", "network"],
+    "modules-right": ["custom/capslock","custom/dnd", "custom/separator", "battery", "custom/separator", "memory", "custom/separator", "cpu", "custom/separator", "pulseaudio","custom/separator", "network", "clock"],
 
 
     "hyprland/workspaces": {
